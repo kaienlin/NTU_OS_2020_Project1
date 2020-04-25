@@ -46,7 +46,7 @@ void proc_start(Process *proc)
                 exit(EXIT_SUCCESS);
         } else if (pid > 0) {  // parent process
                 // print to stdout
-                printf("%s %d\n", proc->name, proc->pid);
+                printf("%s %d\n", proc->name, pid);
 
                 // set process attributes
                 proc->pid = pid;
