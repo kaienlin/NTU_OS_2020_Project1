@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <assert.h>
 #include <sys/syscall.h>
 #include <sys/wait.h>
 #include <sys/types.h>
@@ -24,7 +25,7 @@
 #define SYSCALL_GETTIME 333
 #define SYSCALL_SHOWINFO 334
 
-enum Proc_state { READY, RUNNING, TERMINATED };
+enum Proc_state { NOT_ARRIVED, READY, RUNNING, TERMINATED };
 
 typedef struct _Process {
         char name[32];                // process name

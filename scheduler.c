@@ -14,6 +14,7 @@ int main(void)
         for (int i = 0; i < N; i++) {
                 scanf("%s %lu %lu", proc_list[i].name, &proc_list[i].ready_time, &proc_list[i].exec_time);
                 proc_list[i].ord = i;
+                proc_list[i].state = NOT_ARRIVED;
         }
 
         // sort processed by their ready time
