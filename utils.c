@@ -14,6 +14,18 @@ int cmp_readytime_asc(const void *_a, const void *_b)
         return 0;
 }
 
+int get_min_remaining_time_p(Process proc_list[], int N)
+{
+        unsigned long mn = ULONG_MAX;
+        int ret = -1;
+        for (int i = 0; i < N; i++) {
+                if (proc_list[i].state != READY) continue;
+                if (proc_list[i].remaining_time < mn)
+                        mn = proc_list[i].remaining_time, ret = i;
+        }
+        return ret;
+}
+
 void proc_set_cpu(pid_t pid, int cpu_id)
 {
         cpu_set_t cpu_set;

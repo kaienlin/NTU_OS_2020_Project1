@@ -10,6 +10,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <assert.h>
+#include <limits.h>
 #include <sys/syscall.h>
 #include <sys/wait.h>
 #include <sys/types.h>
@@ -41,6 +42,7 @@ typedef struct _Process {
 } Process;
 
 int cmp_readytime_asc(const void *_a, const void *_b);
+int get_min_remaining_time_p(Process proc_list[], int N);
 void proc_set_cpu(pid_t pid, int cpu_id);
 void proc_start(Process *proc);
 void proc_block(Process *proc);
