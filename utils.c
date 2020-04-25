@@ -48,6 +48,7 @@ void proc_start(Process *proc)
         } else if (pid > 0) {  // parent process
                 // print to stdout
                 printf("%s %d\n", proc->name, pid);
+                fflush(stdout);
 
                 proc_set_cpu(pid, CPU_CHILDREN);
 
