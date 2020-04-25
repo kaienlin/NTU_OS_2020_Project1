@@ -13,6 +13,7 @@ int main(void)
         // read inputs
         for (int i = 0; i < N; i++) {
                 scanf("%s %lu %lu", proc_list[i].name, &proc_list[i].ready_time, &proc_list[i].exec_time);
+                proc_list[i].remaining_time = proc_list[i].exec_time;
                 proc_list[i].ord = i;
                 proc_list[i].state = NOT_ARRIVED;
         }
