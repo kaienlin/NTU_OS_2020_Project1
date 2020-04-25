@@ -25,4 +25,4 @@ scheduler: scheduler.c scheduler.h utils.o data_struct.o FIFO.o RR.o SJF.o PSJF.
 	$(CC) $(flags) scheduler.c utils.o data_struct.o FIFO.o RR.o SJF.o PSJF.o -o scheduler
 
 clean:
-	rm -f scheduler utils.o FIFO.o RR.o SJF.o PSJF.o
+	rm -f scheduler utils.o FIFO.o RR.o SJF.o PSJF.o data_struct.o
