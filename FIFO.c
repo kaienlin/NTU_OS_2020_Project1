@@ -5,11 +5,8 @@ void FIFO_scheduler(Process proc_list[], int N)
         int cur_p = 0;
         int ready_p = 0;
         for (int time = 0; ; time++) {
-                // If the current running process has finished, wait it
-                if (proc_list[cur_p].state == RUNNING && proc_list[cur_p].remaining_time == 0 ) {
-                        proc_term(&proc_list[cur_p]);
-                        ++cur_p;
-                }
+                // assertion to ensure correctness
+                assert(cur_p <= ready_p);
 
                 // start all process whose ready time <= time
                 while (ready_p < N && proc_list[ready_p].ready_time <= time) {
@@ -27,6 +24,12 @@ void FIFO_scheduler(Process proc_list[], int N)
                 // if the current process is running, decrease its remaining time
                 if (proc_list[cur_p].state == RUNNING) {
                         --proc_list[cur_p].remaining_time;
+                        if (proc_list[cur_p].remaining_time == 0) {
+                                proc_term(&proc_list[cur_p]);
+                                ++cur_p;
+                                if (cur_p == N)
+                                        exit(EXIT_SUCCESS);
+                        }
                 }
         }
 }
