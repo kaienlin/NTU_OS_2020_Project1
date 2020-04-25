@@ -22,7 +22,7 @@ int main(void)
         qsort(proc_list, N, sizeof(Process), cmp_readytime_asc);
 
         // run on 0-th CPU
-        proc_set_cpu(getpid(), 0);
+        proc_set_cpu(getpid(), CPU_SCHEDULER);
 
         // parse policy and execute the corresponded function
         if (strcmp("FIFO", sched_policy) == 0) {

@@ -29,6 +29,7 @@ void RR_scheduler(Process proc_list[], int N)
 
                 TIME_UNIT;
                 
+                // if there is a process running, decrease its remaining time and counter
                 if (running_p != -1) {
                         --proc_list[running_p].remaining_time;
                         --counter;

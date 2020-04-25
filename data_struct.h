@@ -21,5 +21,6 @@ typedef struct _Heap {
 
 void heap_push(Heap *heap, int val);
 int heap_pop(Heap *heap);
+int heap_top(Heap *heap);
 
 #endif

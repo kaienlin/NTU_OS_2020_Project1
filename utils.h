@@ -18,9 +18,12 @@
 
 #define ERR_EXIT(msg) do { perror(msg); exit(EXIT_FAILURE); } while (0)
 
-#define CPU_ID 0
+#define CPU_SCHEDULER 0
+#define CPU_CHILDREN 1
 
 #define PRIORITY_HIGH 99
+#define PRIORITY_MEDIUM 50
+#define PRIORITY_LOW 1
 
 #define SYSCALL_GETTIME 333
 #define SYSCALL_SHOWINFO 334

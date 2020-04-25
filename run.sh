@@ -5,6 +5,7 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
+make clean && make
 dmesg -C
 for path in OS_PJ1_Test/FIFO*; do
 	name=`basename -s .txt "${path}"`
@@ -15,3 +16,5 @@ for path in OS_PJ1_Test/FIFO*; do
 done
 
 chown -R os:os output/
+
+make clean

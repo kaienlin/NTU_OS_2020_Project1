@@ -62,3 +62,10 @@ int heap_pop(Heap *heap)
         free(old);
         return ret;
 }
+
+int heap_top(Heap *heap)
+{
+        if (heap->head == NULL)
+                return -1;
+        return heap->head->val;
+}
