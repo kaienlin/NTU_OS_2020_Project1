@@ -24,8 +24,6 @@ void RR_scheduler(Process proc_list[], int N)
                         if (running_p != -1) {
                                 proc_wakeup(&proc_list[running_p]);
                                 counter = quantum;
-                                if (running_p == 5)
-                                        fprintf(stderr, "%lu\n", proc_list[5].remaining_time);
                         }
                 }
 
@@ -40,7 +38,6 @@ void RR_scheduler(Process proc_list[], int N)
                                 running_p = -1;
                         }
                         if (proc_list[running_p].remaining_time == 0) {
-                                fprintf(stderr, "%d\n", running_p);
                                 proc_term(&proc_list[running_p]);
                                 running_p = -1;
                                 --left_jobs;
