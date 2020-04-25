@@ -29,6 +29,7 @@ void proc_start(Process *proc)
         pid_t pid = fork();
         
         if (pid == 0) {  // child process
+                proc_set_cpu(getpid(), 1);
                 // get starting time
                 long st_sec, st_nsec;
                 syscall(SYSCALL_GETTIME, &st_sec, &st_nsec);
@@ -47,6 +48,8 @@ void proc_start(Process *proc)
         } else if (pid > 0) {  // parent process
                 // print to stdout
                 printf("%s %d\n", proc->name, pid);
+
+                proc_set_cpu(pid, 1);
 
                 // set process attributes
                 proc->pid = pid;

@@ -14,15 +14,19 @@ void RR_scheduler(Process proc_list[], int N)
                 // start all process whose ready time <= time
                 while (ready_p < N && proc_list[ready_p].ready_time <= time) {
                         proc_start(&proc_list[ready_p]);
-                        ++ready_p;
                         queue_push(queue, ready_p);
+                        ++ready_p;
                 }
 
                 // if CPU is available, assign a process to it
                 if (running_p == -1) {
                         running_p = queue_pop(queue);
-                        proc_wakeup(&proc_list[running_p]);
-                        counter = quantum;
+                        if (running_p != -1) {
+                                proc_wakeup(&proc_list[running_p]);
+                                counter = quantum;
+                                if (running_p == 5)
+                                        fprintf(stderr, "%lu\n", proc_list[5].remaining_time);
+                        }
                 }
 
                 TIME_UNIT;
@@ -33,8 +37,12 @@ void RR_scheduler(Process proc_list[], int N)
                         if (counter == 0 && proc_list[running_p].remaining_time != 0) {
                                 proc_block(&proc_list[running_p]);
                                 queue_push(queue, running_p);
-                        } else if (proc_list[running_p].remaining_time == 0) {
+                                running_p = -1;
+                        }
+                        if (proc_list[running_p].remaining_time == 0) {
+                                fprintf(stderr, "%d\n", running_p);
                                 proc_term(&proc_list[running_p]);
+                                running_p = -1;
                                 --left_jobs;
                                 if (left_jobs == 0)
                                         exit(EXIT_SUCCESS);
