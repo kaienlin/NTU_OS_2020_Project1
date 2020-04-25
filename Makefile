@@ -6,6 +6,9 @@ all: scheduler
 utils.o: utils.c
 	$(CC) $(flags) utils.c -c -o utils.o
 
+data_struct.o: data_struct.c
+	$(CC) $(flags) data_struct.c -c -o data_struct.o
+
 FIFO.o: FIFO.c
 	$(CC) $(flags) FIFO.c -c -o FIFO.o
 
@@ -18,8 +21,8 @@ SJF.o: SJF.c
 PSJF.o: PSJF.c
 	$(CC) $(flags) PSJF.c -c -o PSJF.o
 
-scheduler: scheduler.c scheduler.h utils.o FIFO.o RR.o SJF.o PSJF.o
-	$(CC) $(flags) scheduler.c utils.o FIFO.o RR.o SJF.o PSJF.o -o scheduler
+scheduler: scheduler.c scheduler.h utils.o data_struct.o FIFO.o RR.o SJF.o PSJF.o
+	$(CC) $(flags) scheduler.c utils.o data_struct.o FIFO.o RR.o SJF.o PSJF.o -o scheduler
 
 clean:
 	rm -f scheduler utils.o FIFO.o RR.o SJF.o PSJF.o

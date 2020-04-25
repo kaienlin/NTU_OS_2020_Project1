@@ -5,6 +5,7 @@ List* list_new(int val)
         List *li = (List*)malloc(sizeof(List));
         li->val = val;
         li->next = NULL;
+        return li;
 }
 
 void queue_push(Queue *que, int val)
