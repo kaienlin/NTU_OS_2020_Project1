@@ -41,6 +41,11 @@ void proc_start(Process *proc)
         pid_t pid = fork();
         
         if (pid == 0) {  // child process
+                 // block the new process immediately
+                proc_set_cpu(pid, CPU_CHILDREN);
+                proc_block(proc);
+                TIME_UNIT;
+                
                 // get starting time
                 long st_sec, st_nsec;
                 syscall(SYSCALL_GETTIME, &st_sec, &st_nsec);
@@ -57,12 +62,13 @@ void proc_start(Process *proc)
 
                 exit(EXIT_SUCCESS);
         } else if (pid > 0) {  // parent process
+                // block the new process immediately
+                proc_set_cpu(pid, CPU_CHILDREN);
+                proc_block(proc);
+
                 // print to stdout
                 printf("%s %d\n", proc->name, pid);
                 fflush(stdout);
-
-                proc_set_cpu(pid, CPU_CHILDREN);
-                proc_block(proc);
 
                 // set process attributes
                 proc->pid = pid;

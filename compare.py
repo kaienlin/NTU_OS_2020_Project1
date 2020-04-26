@@ -165,7 +165,7 @@ class TestCase:
         def calc_diff(th, rl, name):
                 if th[name] == 0:
                         return 0.0
-                prettyfloat = lambda x: '%0.2f' % x
+                prettyfloat = lambda x: '%+0.2f' % x
                 return prettyfloat((rl[name] - th[name]) / th[name] * 100)
 
         def compare(self):
@@ -186,7 +186,9 @@ class TestCase:
                         result += f"    Process {th['name']}:\n"
                         result += f"        theory:     start at {th['start_time']}, end at {th['end_time']}\n"
                         result += f"        my_result:  start at {rl['start_time']}, end at {rl['end_time']}\n"
-                        result += f"        difference: start_time {self.calc_diff(th, rl, 'start_time')}%, end_time {self.calc_diff(th, rl, 'end_time')}%\n"
+                        st_diff = self.calc_diff(th, rl, 'start_time')
+                        ft_diff = self.calc_diff(th, rl, 'end_time')
+                        result += f"        difference: start_time {st_diff}%, end_time {ft_diff}%\n"
 
                 return result
 
@@ -201,8 +203,8 @@ def get_time_unit():
 if __name__ == '__main__':
         TIME_UNIT = get_time_unit()
         test_case_list = []
-        for tp in ['FIFO', 'RR', 'SJF', 'SJF'][2:4]:
-                for i in range(1, 6):
+        for tp in ['FIFO', 'RR', 'SJF', 'SJF'][2:3]:
+                for i in range(1, 2):
                         test_case_list.append(f'{tp}_{i}')
         
         for tc_name in test_case_list:
