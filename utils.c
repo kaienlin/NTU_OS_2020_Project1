@@ -38,6 +38,7 @@ void proc_set_cpu(pid_t pid, int cpu_id)
 
 void proc_start(Process *proc)
 {
+        nice(18);
         pid_t pid = fork();
         
         if (pid == 0) {  // child process
@@ -62,6 +63,7 @@ void proc_start(Process *proc)
 
                 exit(EXIT_SUCCESS);
         } else if (pid > 0) {  // parent process
+                nice(-19);
                 // block the new process immediately
                 proc_set_cpu(pid, CPU_CHILDREN);
                 proc_block(proc);
