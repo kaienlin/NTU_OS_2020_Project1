@@ -95,7 +95,6 @@ class TestCase:
                         left = N
                         while left > 0:
                                 while ready_p < N and proc_list[ready_p]['ready'] <= t:
-                                        print(ready_p)
                                         is_ready[ready_p] = True
                                         ready_p += 1
 

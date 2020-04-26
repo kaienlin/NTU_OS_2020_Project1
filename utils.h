@@ -49,6 +49,5 @@ void proc_start(Process *proc);
 void proc_block(Process *proc);
 void proc_wakeup(Process *proc);
 void proc_term(Process *proc);
-pid_t proc_dummy();
 
 #endif // _OSPJ1_UTILS_H_

@@ -97,15 +97,3 @@ void proc_term(Process *proc)
         waitpid(proc->pid, NULL, 0);
         proc->state = TERMINATED;
 }
-
-pid_t proc_dummy()
-{
-        pid_t pid = fork();
-        if (pid == 0) {
-                while (1);
-        } else if (pid > 0) {
-                return pid;
-        } else {
-                ERR_EXIT("fork");
-        }
-}
