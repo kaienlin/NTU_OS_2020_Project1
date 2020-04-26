@@ -203,8 +203,8 @@ def get_time_unit():
 if __name__ == '__main__':
         TIME_UNIT = get_time_unit()
         test_case_list = []
-        for tp in ['FIFO', 'RR', 'SJF', 'SJF'][2:3]:
-                for i in range(1, 2):
+        for tp in ['FIFO', 'RR', 'SJF', 'PSJF']:
+                for i in range(1, 6):
                         test_case_list.append(f'{tp}_{i}')
         
         for tc_name in test_case_list:

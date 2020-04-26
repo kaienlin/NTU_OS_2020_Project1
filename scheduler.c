@@ -25,7 +25,7 @@ int main(void)
         proc_set_cpu(getpid(), CPU_SCHEDULER);
 
         // make the scheduler have high priority
-        proc_set_priority(getpid(), PRIORITY_HIGH);
+        proc_set_priority(getpid(), PRIORITY_MEDIUM);
 
         // parse policy and execute the corresponded function
         if (strcmp("FIFO", sched_policy) == 0) {
