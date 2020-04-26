@@ -72,21 +72,23 @@ void proc_start(Process *proc)
         }
 }
 
-void proc_block(Process *proc)
+void proc_set_priority(pid_t pid, int priority)
 {
         struct sched_param param;
-        param.sched_priority = PRIORITY_LOW;
-        if (sched_setscheduler(proc->pid, SCHED_FIFO, &param) != 0)
+        param.sched_priority = priority;
+        if (sched_setscheduler(pid, SCHED_FIFO, &param) != 0)
                 ERR_EXIT("sched_setscheduler");
+}
+
+void proc_block(Process *proc)
+{
+        proc_set_priority(proc->pid, PRIORITY_LOW);
         proc->state = READY;
 }
 
 void proc_wakeup(Process *proc)
 {
-        struct sched_param param;
-        param.sched_priority = PRIORITY_HIGH;
-        if (sched_setscheduler(proc->pid, SCHED_FIFO, &param) != 0)
-                ERR_EXIT("sched_setscheduler");
+        proc_set_priority(proc->pid, PRIORITY_HIGH);
         proc->state = RUNNING;
 }
 
@@ -94,4 +96,16 @@ void proc_term(Process *proc)
 {
         waitpid(proc->pid, NULL, 0);
         proc->state = TERMINATED;
+}
+
+pid_t proc_dummy()
+{
+        pid_t pid = fork();
+        if (pid == 0) {
+                while (1);
+        } else if (pid > 0) {
+                return pid;
+        } else {
+                ERR_EXIT("fork");
+        }
 }

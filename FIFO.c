@@ -2,9 +2,10 @@
 
 void FIFO_scheduler(Process proc_list[], int N)
 {
+        int left_jobs = N;
         int cur_p = 0;
         int ready_p = 0;
-        for (int time = 0; ; time++) {
+        for (int time = 0; left_jobs > 0; time++) {
                 // assertion to ensure correctness
                 assert(cur_p <= ready_p);
 
@@ -27,8 +28,7 @@ void FIFO_scheduler(Process proc_list[], int N)
                         if (proc_list[cur_p].remaining_time == 0) {
                                 proc_term(&proc_list[cur_p]);
                                 ++cur_p;
-                                if (cur_p == N)
-                                        exit(EXIT_SUCCESS);
+                                --left_jobs;
                         }
                 }
         }

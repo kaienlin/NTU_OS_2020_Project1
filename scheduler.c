@@ -24,6 +24,12 @@ int main(void)
         // run on 0-th CPU
         proc_set_cpu(getpid(), CPU_SCHEDULER);
 
+        // make the scheduler have high priority
+        proc_set_priority(getpid(), PRIORITY_HIGH);
+
+        // spawn dummy process
+        pid_t dummy = proc_dummy();
+
         // parse policy and execute the corresponded function
         if (strcmp("FIFO", sched_policy) == 0) {
                 FIFO_scheduler(proc_list, N);
@@ -37,6 +43,8 @@ int main(void)
                 fprintf(stderr, "unknown scheduling policy: %s\n", sched_policy);
                 return EXIT_FAILURE;
         }
+
+        kill(dummy, SIGKILL);
         
         return EXIT_SUCCESS;
 }

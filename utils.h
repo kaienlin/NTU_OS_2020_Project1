@@ -43,10 +43,12 @@ typedef struct _Process {
 
 int cmp_readytime_asc(const void *_a, const void *_b);
 int get_min_remaining_time_p(Process proc_list[], int N);
+void proc_set_priority(pid_t pid, int priority);
 void proc_set_cpu(pid_t pid, int cpu_id);
 void proc_start(Process *proc);
 void proc_block(Process *proc);
 void proc_wakeup(Process *proc);
 void proc_term(Process *proc);
+pid_t proc_dummy();
 
 #endif // _OSPJ1_UTILS_H_

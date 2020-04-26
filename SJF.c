@@ -7,7 +7,7 @@ void SJF_scheduler(Process proc_list[], int N)
         int ready_p = 0;
         int running_p = -1;
 
-        for (int time = 0; ; time++) {
+        for (int time = 0; left_jobs > 0; time++) {
                 // start all process whose ready time <= time
                 while (ready_p < N && proc_list[ready_p].ready_time <= time) {
                         proc_start(&proc_list[ready_p]);
@@ -31,8 +31,6 @@ void SJF_scheduler(Process proc_list[], int N)
                                 proc_term(&proc_list[running_p]);
                                 running_p = -1;
                                 --left_jobs;
-                                if (left_jobs == 0)
-                                        exit(EXIT_SUCCESS);
                         }
                 }
         }

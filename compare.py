@@ -63,7 +63,8 @@ class TestCase:
                         ready_p = 0
                         running_p = -1
                         queue = []
-                        while N > 0:
+                        left = N
+                        while left > 0:
                                 while ready_p < N and proc_list[ready_p]['ready'] <= t:
                                         queue.append(ready_p)
                                         ready_p += 1
@@ -84,19 +85,87 @@ class TestCase:
                                                 running_p = -1
                                         elif proc_list[running_p]['exec'] == 0:
                                                 proc_list[running_p]['end_time'] = t
-                                                N -= 1
+                                                left -= 1
                                                 running_p = -1
                 elif policy == 'SJF':
-                        pass
+                        t = 0
+                        ready_p = 0
+                        running_p = -1
+                        is_ready = [False for _ in range(N)]
+                        left = N
+                        while left > 0:
+                                while ready_p < N and proc_list[ready_p]['ready'] <= t:
+                                        print(ready_p)
+                                        is_ready[ready_p] = True
+                                        ready_p += 1
+
+                                if running_p == -1:
+                                        mn = 1e10+999
+                                        for i, p in enumerate(proc_list):
+                                                if not is_ready[i]: continue
+                                                if p['exec'] < mn:
+                                                        mn = p['exec']
+                                                        running_p = i
+                                        if running_p != -1:
+                                                is_ready[running_p] = False
+                                                if 'start_time' not in proc_list[running_p]:
+                                                        proc_list[running_p]['start_time'] = t
+
+                                t += 1
+
+                                if running_p != -1:
+                                        proc_list[running_p]['exec'] -= 1
+                                        if proc_list[running_p]['exec'] == 0:
+                                                proc_list[running_p]['end_time'] = t
+                                                is_ready[running_p] = False
+                                                left -= 1
+                                                running_p = -1
                 elif policy == 'PSJF':
-                        pass
+                        t = 0
+                        ready_p = 0
+                        running_p = -1
+                        is_ready = [False for _ in range(N)]
+                        left = N
+                        while left > 0:
+                                while ready_p < N and proc_list[ready_p]['ready'] <= t:
+                                        is_ready[ready_p] = True
+                                        ready_p += 1
+                                
+                                mn_p = -1
+                                mn = 1e10+999
+                                for i, p in enumerate(proc_list):
+                                        if not is_ready[i]: continue
+                                        if p['exec'] < mn:
+                                                mn = p['exec']
+                                                mn_p = i
+                                if running_p == -1 and mn_p != -1:
+                                        running_p = mn_p
+                                        is_ready[running_p] = False
+                                        if 'start_time' not in proc_list[running_p]:
+                                                proc_list[running_p]['start_time'] = t
+                                elif mn_p != -1 and proc_list[mn_p]['exec'] < proc_list[running_p]['exec']:
+                                        is_ready[running_p] = True
+                                        running_p = mn_p
+                                        is_ready[running_p] = False
+                                        if 'start_time' not in proc_list[running_p]:
+                                                proc_list[running_p]['start_time'] = t
+
+                                t += 1
+
+                                if running_p != -1:
+                                        proc_list[running_p]['exec'] -= 1
+                                        if proc_list[running_p]['exec'] == 0:
+                                                proc_list[running_p]['end_time'] = t
+                                                is_ready[running_p] = False
+                                                left -= 1
+                                                running_p = -1
 
                 return proc_list
 
         @staticmethod
         def calc_diff(th, rl, name):
                 if th[name] == 0:
-                        return 0.0;
+                        return 0.0
                 prettyfloat = lambda x: '%0.2f' % x
                 return prettyfloat((rl[name] - th[name]) / th[name] * 100)
 
@@ -104,11 +173,12 @@ class TestCase:
                 result = f'{self.test_name}.txt: \n'
                 theory = sorted(self.simulation(), key=lambda p: p['name'])
                 real = sorted(self.parse_output(), key=lambda p: p['name'])
-                x = sorted(real, key=lambda p: p['start_time'])[0]
-                for i in theory:
-                        if i['name'] == x['name']:
-                                t0 = x['start_time'] - i['ready']
 
+                # normalizing
+                min_st_p = sorted(real, key=lambda p: p['start_time'])[0]
+                for i in theory:
+                        if i['name'] == min_st_p['name']:
+                                t0 = min_st_p['start_time'] - i['ready']
                 for p in real:
                         p['start_time'] -= t0
                         p['end_time'] -= t0
@@ -118,6 +188,7 @@ class TestCase:
                         result += f"        theory:     start at {th['start_time']}, end at {th['end_time']}\n"
                         result += f"        my_result:  start at {rl['start_time']}, end at {rl['end_time']}\n"
                         result += f"        difference: start_time {self.calc_diff(th, rl, 'start_time')}%, end_time {self.calc_diff(th, rl, 'end_time')}%\n"
+
                 return result
 
 def get_time_unit():
@@ -131,7 +202,7 @@ def get_time_unit():
 if __name__ == '__main__':
         TIME_UNIT = get_time_unit()
         test_case_list = []
-        for tp in ['FIFO', 'RR', 'SJF', 'SJF'][0:2]:
+        for tp in ['FIFO', 'RR', 'SJF', 'SJF'][2:4]:
                 for i in range(1, 6):
                         test_case_list.append(f'{tp}_{i}')
         
