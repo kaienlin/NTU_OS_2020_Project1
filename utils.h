@@ -29,7 +29,7 @@
 #define SYSCALL_GETTIME 333
 #define SYSCALL_SHOWINFO 334
 
-enum Proc_state { NOT_ARRIVED, READY, RUNNING, TERMINATED };
+enum ProcState { NOT_ARRIVED, READY, RUNNING, TERMINATED };
 
 typedef struct _Process {
         char name[32];                // process name
@@ -38,7 +38,7 @@ typedef struct _Process {
         unsigned long remaining_time; // remaining time
         int ord;                      // the order in the input
         pid_t pid;                    // process id
-        enum Proc_state state;        // current state of process
+        enum ProcState state;         // current state of process
 } Process;
 
 int cmp_readytime_asc(const void *_a, const void *_b);
