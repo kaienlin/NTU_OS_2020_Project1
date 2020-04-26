@@ -41,7 +41,6 @@ void proc_start(Process *proc)
         pid_t pid = fork();
         
         if (pid == 0) {  // child process
-                proc_set_cpu(getpid(), CPU_CHILDREN);
                 // get starting time
                 long st_sec, st_nsec;
                 syscall(SYSCALL_GETTIME, &st_sec, &st_nsec);
@@ -63,6 +62,7 @@ void proc_start(Process *proc)
                 fflush(stdout);
 
                 proc_set_cpu(pid, CPU_CHILDREN);
+                proc_block(proc);
 
                 // set process attributes
                 proc->pid = pid;
@@ -75,8 +75,8 @@ void proc_start(Process *proc)
 void proc_block(Process *proc)
 {
         struct sched_param param;
-        param.sched_priority = 0;
-        if (sched_setscheduler(proc->pid, SCHED_OTHER, &param) != 0)
+        param.sched_priority = PRIORITY_LOW;
+        if (sched_setscheduler(proc->pid, SCHED_FIFO, &param) != 0)
                 ERR_EXIT("sched_setscheduler");
         proc->state = READY;
 }
