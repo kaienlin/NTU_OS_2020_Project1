@@ -1,428 +1,428 @@
 FIFO_1.txt: 
     Process P1:
         theory:     start at 0, end at 500
-        my_result:  start at 0, end at 499
-        difference: start_time 0.0%, end_time -0.20%
+        my_result:  start at 0, end at 495
+        difference: start_time 0.0%, end_time -1.00%
     Process P2:
         theory:     start at 500, end at 1000
-        my_result:  start at 500, end at 1014
-        difference: start_time +0.00%, end_time +1.40%
+        my_result:  start at 496, end at 1002
+        difference: start_time -0.80%, end_time +0.20%
     Process P3:
         theory:     start at 1000, end at 1500
-        my_result:  start at 1015, end at 1550
-        difference: start_time +1.50%, end_time +3.33%
+        my_result:  start at 1003, end at 1496
+        difference: start_time +0.30%, end_time -0.27%
     Process P4:
         theory:     start at 1500, end at 2000
-        my_result:  start at 1551, end at 2066
-        difference: start_time +3.40%, end_time +3.30%
+        my_result:  start at 1497, end at 1999
+        difference: start_time -0.20%, end_time -0.05%
     Process P5:
         theory:     start at 2000, end at 2500
-        my_result:  start at 2067, end at 2595
-        difference: start_time +3.35%, end_time +3.80%
+        my_result:  start at 2001, end at 2496
+        difference: start_time +0.05%, end_time -0.16%
 
 FIFO_2.txt: 
     Process P1:
         theory:     start at 0, end at 80000
-        my_result:  start at 0, end at 81332
-        difference: start_time 0.0%, end_time +1.67%
+        my_result:  start at 0, end at 78508
+        difference: start_time 0.0%, end_time -1.86%
     Process P2:
         theory:     start at 80000, end at 85000
-        my_result:  start at 81333, end at 86509
-        difference: start_time +1.67%, end_time +1.78%
+        my_result:  start at 78509, end at 83468
+        difference: start_time -1.86%, end_time -1.80%
     Process P3:
         theory:     start at 85000, end at 86000
-        my_result:  start at 86510, end at 87514
-        difference: start_time +1.78%, end_time +1.76%
+        my_result:  start at 83469, end at 84465
+        difference: start_time -1.80%, end_time -1.78%
     Process P4:
         theory:     start at 86000, end at 87000
-        my_result:  start at 87514, end at 88537
-        difference: start_time +1.76%, end_time +1.77%
+        my_result:  start at 84466, end at 85458
+        difference: start_time -1.78%, end_time -1.77%
 
 FIFO_3.txt: 
     Process P1:
         theory:     start at 0, end at 8000
-        my_result:  start at 0, end at 8163
-        difference: start_time 0.0%, end_time +2.04%
+        my_result:  start at 0, end at 7917
+        difference: start_time 0.0%, end_time -1.04%
     Process P2:
         theory:     start at 8000, end at 13000
-        my_result:  start at 8164, end at 13347
-        difference: start_time +2.05%, end_time +2.67%
+        my_result:  start at 7918, end at 12883
+        difference: start_time -1.03%, end_time -0.90%
     Process P3:
         theory:     start at 13000, end at 16000
-        my_result:  start at 13348, end at 16423
-        difference: start_time +2.68%, end_time +2.64%
+        my_result:  start at 12883, end at 15880
+        difference: start_time -0.90%, end_time -0.75%
     Process P4:
         theory:     start at 16000, end at 17000
-        my_result:  start at 16424, end at 17442
-        difference: start_time +2.65%, end_time +2.60%
+        my_result:  start at 15882, end at 16884
+        difference: start_time -0.74%, end_time -0.68%
     Process P5:
         theory:     start at 17000, end at 18000
-        my_result:  start at 17443, end at 18468
-        difference: start_time +2.61%, end_time +2.60%
+        my_result:  start at 16885, end at 17892
+        difference: start_time -0.68%, end_time -0.60%
     Process P6:
         theory:     start at 18000, end at 19000
-        my_result:  start at 18469, end at 19478
-        difference: start_time +2.61%, end_time +2.52%
+        my_result:  start at 17893, end at 18889
+        difference: start_time -0.59%, end_time -0.58%
     Process P7:
         theory:     start at 19000, end at 23000
-        my_result:  start at 19479, end at 23599
-        difference: start_time +2.52%, end_time +2.60%
+        my_result:  start at 18891, end at 22850
+        difference: start_time -0.57%, end_time -0.65%
 
 FIFO_4.txt: 
     Process P1:
         theory:     start at 0, end at 2000
-        my_result:  start at 0, end at 2033
-        difference: start_time 0.0%, end_time +1.65%
+        my_result:  start at 0, end at 1970
+        difference: start_time 0.0%, end_time -1.50%
     Process P2:
         theory:     start at 2000, end at 2500
-        my_result:  start at 2034, end at 2544
-        difference: start_time +1.70%, end_time +1.76%
+        my_result:  start at 1971, end at 2464
+        difference: start_time -1.45%, end_time -1.44%
     Process P3:
         theory:     start at 2500, end at 2700
-        my_result:  start at 2545, end at 2752
-        difference: start_time +1.80%, end_time +1.93%
+        my_result:  start at 2465, end at 2657
+        difference: start_time -1.40%, end_time -1.59%
     Process P4:
         theory:     start at 2700, end at 3200
-        my_result:  start at 2753, end at 3270
-        difference: start_time +1.96%, end_time +2.19%
+        my_result:  start at 2658, end at 3146
+        difference: start_time -1.56%, end_time -1.69%
 
 FIFO_5.txt: 
     Process P1:
         theory:     start at 0, end at 8000
-        my_result:  start at 0, end at 8201
-        difference: start_time 0.0%, end_time +2.51%
+        my_result:  start at 0, end at 7814
+        difference: start_time 0.0%, end_time -2.33%
     Process P2:
         theory:     start at 8000, end at 13000
-        my_result:  start at 8202, end at 13303
-        difference: start_time +2.53%, end_time +2.33%
+        my_result:  start at 7815, end at 12704
+        difference: start_time -2.31%, end_time -2.28%
     Process P3:
         theory:     start at 13000, end at 16000
-        my_result:  start at 13304, end at 16342
-        difference: start_time +2.34%, end_time +2.14%
+        my_result:  start at 12705, end at 15653
+        difference: start_time -2.27%, end_time -2.17%
     Process P4:
         theory:     start at 16000, end at 17000
-        my_result:  start at 16343, end at 17366
-        difference: start_time +2.14%, end_time +2.15%
+        my_result:  start at 15654, end at 16635
+        difference: start_time -2.16%, end_time -2.15%
     Process P5:
         theory:     start at 17000, end at 18000
-        my_result:  start at 17367, end at 18385
-        difference: start_time +2.16%, end_time +2.14%
+        my_result:  start at 16636, end at 17621
+        difference: start_time -2.14%, end_time -2.11%
     Process P6:
         theory:     start at 18000, end at 19000
-        my_result:  start at 18386, end at 19409
-        difference: start_time +2.14%, end_time +2.15%
+        my_result:  start at 17622, end at 18607
+        difference: start_time -2.10%, end_time -2.07%
     Process P7:
         theory:     start at 19000, end at 23000
-        my_result:  start at 19410, end at 23541
-        difference: start_time +2.16%, end_time +2.35%
+        my_result:  start at 18608, end at 22531
+        difference: start_time -2.06%, end_time -2.04%
 
 RR_1.txt: 
     Process P1:
         theory:     start at 0, end at 500
-        my_result:  start at 0, end at 502
-        difference: start_time 0.0%, end_time +0.40%
+        my_result:  start at 0, end at 495
+        difference: start_time 0.0%, end_time -1.00%
     Process P2:
         theory:     start at 500, end at 1000
-        my_result:  start at 504, end at 1001
-        difference: start_time +0.80%, end_time +0.10%
+        my_result:  start at 496, end at 985
+        difference: start_time -0.80%, end_time -1.50%
     Process P3:
         theory:     start at 1000, end at 1500
-        my_result:  start at 1009, end at 1533
-        difference: start_time +0.90%, end_time +2.20%
+        my_result:  start at 986, end at 1482
+        difference: start_time -1.40%, end_time -1.20%
     Process P4:
         theory:     start at 1500, end at 2000
-        my_result:  start at 1534, end at 2030
-        difference: start_time +2.27%, end_time +1.50%
+        my_result:  start at 1483, end at 1986
+        difference: start_time -1.13%, end_time -0.70%
     Process P5:
         theory:     start at 2000, end at 2500
-        my_result:  start at 2031, end at 2535
-        difference: start_time +1.55%, end_time +1.40%
+        my_result:  start at 1986, end at 2474
+        difference: start_time -0.70%, end_time -1.04%
 
 RR_2.txt: 
     Process P1:
         theory:     start at 600, end at 8100
-        my_result:  start at 600, end at 8125
-        difference: start_time +0.00%, end_time +0.31%
+        my_result:  start at 600, end at 7977
+        difference: start_time +0.00%, end_time -1.52%
     Process P2:
         theory:     start at 1100, end at 9600
-        my_result:  start at 1119, end at 9627
-        difference: start_time +1.73%, end_time +0.28%
+        my_result:  start at 1096, end at 9427
+        difference: start_time -0.36%, end_time -1.80%
 
 RR_3.txt: 
     Process P1:
         theory:     start at 1200, end at 19200
-        my_result:  start at 1200, end at 19418
-        difference: start_time +0.00%, end_time +1.14%
+        my_result:  start at 1200, end at 18838
+        difference: start_time +0.00%, end_time -1.89%
     Process P2:
         theory:     start at 2700, end at 20200
-        my_result:  start at 2722, end at 20414
-        difference: start_time +0.81%, end_time +1.06%
+        my_result:  start at 2656, end at 19863
+        difference: start_time -1.63%, end_time -1.67%
     Process P3:
         theory:     start at 4200, end at 18200
-        my_result:  start at 4218, end at 18419
-        difference: start_time +0.43%, end_time +1.20%
+        my_result:  start at 4146, end at 17896
+        difference: start_time -1.29%, end_time -1.67%
     Process P4:
         theory:     start at 6200, end at 31200
-        my_result:  start at 6236, end at 31474
-        difference: start_time +0.58%, end_time +0.88%
+        my_result:  start at 6102, end at 30577
+        difference: start_time -1.58%, end_time -2.00%
     Process P5:
         theory:     start at 7200, end at 30200
-        my_result:  start at 7247, end at 30531
-        difference: start_time +0.65%, end_time +1.10%
+        my_result:  start at 7077, end at 29657
+        difference: start_time -1.71%, end_time -1.80%
     Process P6:
         theory:     start at 8200, end at 28200
-        my_result:  start at 8263, end at 28571
-        difference: start_time +0.77%, end_time +1.32%
+        my_result:  start at 8062, end at 27693
+        difference: start_time -1.68%, end_time -1.80%
 
 RR_4.txt: 
     Process P1:
         theory:     start at 0, end at 23000
-        my_result:  start at 0, end at 23312
-        difference: start_time 0.0%, end_time +1.36%
+        my_result:  start at 0, end at 22656
+        difference: start_time 0.0%, end_time -1.50%
     Process P2:
         theory:     start at 500, end at 20000
-        my_result:  start at 509, end at 20237
-        difference: start_time +1.80%, end_time +1.19%
+        my_result:  start at 503, end at 19721
+        difference: start_time +0.60%, end_time -1.40%
     Process P3:
         theory:     start at 1000, end at 14500
-        my_result:  start at 1021, end at 14708
-        difference: start_time +2.10%, end_time +1.43%
+        my_result:  start at 988, end at 14249
+        difference: start_time -1.20%, end_time -1.73%
     Process P4:
         theory:     start at 1500, end at 5500
-        my_result:  start at 1528, end at 5581
-        difference: start_time +1.87%, end_time +1.47%
+        my_result:  start at 1474, end at 5396
+        difference: start_time -1.73%, end_time -1.89%
     Process P5:
         theory:     start at 2500, end at 6500
-        my_result:  start at 2567, end at 6604
-        difference: start_time +2.68%, end_time +1.60%
+        my_result:  start at 2437, end at 6372
+        difference: start_time -2.52%, end_time -1.97%
     Process P6:
         theory:     start at 3000, end at 7000
-        my_result:  start at 3067, end at 7132
-        difference: start_time +2.23%, end_time +1.89%
+        my_result:  start at 2945, end at 6879
+        difference: start_time -1.83%, end_time -1.73%
     Process P7:
         theory:     start at 3500, end at 18500
-        my_result:  start at 3563, end at 18739
-        difference: start_time +1.80%, end_time +1.29%
+        my_result:  start at 3433, end at 18196
+        difference: start_time -1.91%, end_time -1.64%
 
 RR_5.txt: 
     Process P1:
         theory:     start at 0, end at 23000
-        my_result:  start at 0, end at 23315
-        difference: start_time 0.0%, end_time +1.37%
+        my_result:  start at 0, end at 22731
+        difference: start_time 0.0%, end_time -1.17%
     Process P2:
         theory:     start at 500, end at 20000
-        my_result:  start at 495, end at 20203
-        difference: start_time -1.00%, end_time +1.01%
+        my_result:  start at 483, end at 19705
+        difference: start_time -3.40%, end_time -1.47%
     Process P3:
         theory:     start at 1000, end at 14500
-        my_result:  start at 1004, end at 14652
-        difference: start_time +0.40%, end_time +1.05%
+        my_result:  start at 967, end at 14213
+        difference: start_time -3.30%, end_time -1.98%
     Process P4:
         theory:     start at 1500, end at 5500
-        my_result:  start at 1510, end at 5546
-        difference: start_time +0.67%, end_time +0.84%
+        my_result:  start at 1455, end at 5358
+        difference: start_time -3.00%, end_time -2.58%
     Process P5:
         theory:     start at 2000, end at 6000
-        my_result:  start at 2008, end at 6061
-        difference: start_time +0.40%, end_time +1.02%
+        my_result:  start at 1950, end at 5863
+        difference: start_time -2.50%, end_time -2.28%
     Process P6:
         theory:     start at 3000, end at 7000
-        my_result:  start at 3016, end at 7100
-        difference: start_time +0.53%, end_time +1.43%
+        my_result:  start at 2920, end at 6852
+        difference: start_time -2.67%, end_time -2.11%
     Process P7:
         theory:     start at 3500, end at 18500
-        my_result:  start at 3521, end at 18750
-        difference: start_time +0.60%, end_time +1.35%
+        my_result:  start at 3405, end at 18183
+        difference: start_time -2.71%, end_time -1.71%
 
 SJF_1.txt: 
     Process P1:
         theory:     start at 7000, end at 14000
-        my_result:  start at 7024, end at 14102
-        difference: start_time +0.34%, end_time +0.73%
+        my_result:  start at 6889, end at 13798
+        difference: start_time -1.59%, end_time -1.44%
     Process P2:
         theory:     start at 0, end at 2000
-        my_result:  start at 0, end at 2015
-        difference: start_time 0.0%, end_time +0.75%
+        my_result:  start at 0, end at 1966
+        difference: start_time 0.0%, end_time -1.70%
     Process P3:
         theory:     start at 2000, end at 3000
-        my_result:  start at 2016, end at 3018
-        difference: start_time +0.80%, end_time +0.60%
+        my_result:  start at 1968, end at 2950
+        difference: start_time -1.60%, end_time -1.67%
     Process P4:
         theory:     start at 3000, end at 7000
-        my_result:  start at 3019, end at 7023
-        difference: start_time +0.63%, end_time +0.33%
+        my_result:  start at 2951, end at 6888
+        difference: start_time -1.63%, end_time -1.60%
 
 SJF_2.txt: 
     Process P1:
         theory:     start at 100, end at 200
-        my_result:  start at 100, end at 200
-        difference: start_time +0.00%, end_time +0.00%
+        my_result:  start at 100, end at 197
+        difference: start_time +0.00%, end_time -1.50%
     Process P2:
         theory:     start at 400, end at 4400
-        my_result:  start at 415, end at 4469
-        difference: start_time +3.75%, end_time +1.57%
+        my_result:  start at 407, end at 4356
+        difference: start_time +1.75%, end_time -1.00%
     Process P3:
         theory:     start at 200, end at 400
-        my_result:  start at 201, end at 414
-        difference: start_time +0.50%, end_time +3.50%
+        my_result:  start at 198, end at 406
+        difference: start_time -1.00%, end_time +1.50%
     Process P4:
         theory:     start at 4400, end at 8400
-        my_result:  start at 4470, end at 8543
-        difference: start_time +1.59%, end_time +1.70%
+        my_result:  start at 4357, end at 8328
+        difference: start_time -0.98%, end_time -0.86%
     Process P5:
         theory:     start at 8400, end at 15400
-        my_result:  start at 8544, end at 15585
-        difference: start_time +1.71%, end_time +1.20%
+        my_result:  start at 8329, end at 15259
+        difference: start_time -0.85%, end_time -0.92%
 
 SJF_3.txt: 
     Process P1:
         theory:     start at 100, end at 3100
-        my_result:  start at 100, end at 3141
-        difference: start_time +0.00%, end_time +1.32%
+        my_result:  start at 100, end at 3052
+        difference: start_time +0.00%, end_time -1.55%
     Process P2:
         theory:     start at 11120, end at 16120
-        my_result:  start at 11417, end at 16556
-        difference: start_time +2.67%, end_time +2.70%
+        my_result:  start at 3053, end at 16125
+        difference: start_time -72.54%, end_time +0.03%
     Process P3:
         theory:     start at 16120, end at 23120
-        my_result:  start at 16557, end at 23824
-        difference: start_time +2.71%, end_time +3.04%
+        my_result:  start at 16126, end at 23140
+        difference: start_time +0.04%, end_time +0.09%
     Process P4:
         theory:     start at 3100, end at 3110
-        my_result:  start at 3142, end at 3152
-        difference: start_time +1.35%, end_time +1.35%
+        my_result:  start at 3085, end at 3095
+        difference: start_time -0.48%, end_time -0.48%
     Process P5:
         theory:     start at 3110, end at 3120
-        my_result:  start at 3153, end at 3163
-        difference: start_time +1.38%, end_time +1.38%
+        my_result:  start at 3096, end at 3105
+        difference: start_time -0.45%, end_time -0.48%
     Process P6:
         theory:     start at 3120, end at 7120
-        my_result:  start at 3164, end at 7302
-        difference: start_time +1.41%, end_time +2.56%
+        my_result:  start at 3107, end at 7105
+        difference: start_time -0.42%, end_time -0.21%
     Process P7:
         theory:     start at 7120, end at 11120
-        my_result:  start at 7304, end at 11417
-        difference: start_time +2.58%, end_time +2.67%
+        my_result:  start at 7105, end at 11117
+        difference: start_time -0.21%, end_time -0.03%
     Process P8:
         theory:     start at 23120, end at 32120
-        my_result:  start at 23826, end at 33498
-        difference: start_time +3.05%, end_time +4.29%
+        my_result:  start at 23141, end at 32184
+        difference: start_time +0.09%, end_time +0.20%
 
 SJF_4.txt: 
     Process P1:
         theory:     start at 0, end at 3000
-        my_result:  start at 0, end at 3409
-        difference: start_time 0.0%, end_time +13.63%
+        my_result:  start at 0, end at 2942
+        difference: start_time 0.0%, end_time -1.93%
     Process P2:
         theory:     start at 3000, end at 4000
-        my_result:  start at 3411, end at 4505
-        difference: start_time +13.70%, end_time +12.62%
+        my_result:  start at 2942, end at 3934
+        difference: start_time -1.93%, end_time -1.65%
     Process P3:
         theory:     start at 4000, end at 8000
-        my_result:  start at 4506, end at 8702
-        difference: start_time +12.65%, end_time +8.77%
+        my_result:  start at 3934, end at 7897
+        difference: start_time -1.65%, end_time -1.29%
     Process P4:
         theory:     start at 9000, end at 11000
-        my_result:  start at 8703, end at 11870
-        difference: start_time -3.30%, end_time +7.91%
+        my_result:  start at 8893, end at 10886
+        difference: start_time -1.19%, end_time -1.04%
     Process P5:
         theory:     start at 8000, end at 9000
-        my_result:  start at 8715, end at 9860
-        difference: start_time +8.94%, end_time +9.56%
+        my_result:  start at 7898, end at 8892
+        difference: start_time -1.27%, end_time -1.20%
 
 SJF_5.txt: 
     Process P1:
         theory:     start at 0, end at 2000
-        my_result:  start at 0, end at 2025
-        difference: start_time 0.0%, end_time +1.25%
+        my_result:  start at 0, end at 1981
+        difference: start_time 0.0%, end_time -0.95%
     Process P2:
         theory:     start at 2000, end at 2500
-        my_result:  start at 2026, end at 2534
-        difference: start_time +1.30%, end_time +1.36%
+        my_result:  start at 1982, end at 2467
+        difference: start_time -0.90%, end_time -1.32%
     Process P3:
         theory:     start at 2500, end at 3000
-        my_result:  start at 2535, end at 3046
-        difference: start_time +1.40%, end_time +1.53%
+        my_result:  start at 2468, end at 2964
+        difference: start_time -1.28%, end_time -1.20%
     Process P4:
         theory:     start at 3000, end at 3500
-        my_result:  start at 3047, end at 3562
-        difference: start_time +1.57%, end_time +1.77%
+        my_result:  start at 2965, end at 3454
+        difference: start_time -1.17%, end_time -1.31%
 
 PSJF_1.txt: 
     Process P1:
         theory:     start at 0, end at 25000
-        my_result:  start at 0, end at 26442
-        difference: start_time 0.0%, end_time +5.77%
+        my_result:  start at 0, end at 24529
+        difference: start_time 0.0%, end_time -1.88%
     Process P2:
         theory:     start at 1000, end at 16000
-        my_result:  start at 1027, end at 17055
-        difference: start_time +2.70%, end_time +6.59%
+        my_result:  start at 1029, end at 15742
+        difference: start_time +2.90%, end_time -1.61%
     Process P3:
         theory:     start at 2000, end at 10000
-        my_result:  start at 2121, end at 10622
-        difference: start_time +6.05%, end_time +6.22%
+        my_result:  start at 2024, end at 9841
+        difference: start_time +1.20%, end_time -1.59%
     Process P4:
         theory:     start at 3000, end at 6000
-        my_result:  start at 3149, end at 6407
-        difference: start_time +4.97%, end_time +6.78%
+        my_result:  start at 3025, end at 5972
+        difference: start_time +0.83%, end_time -0.47%
 
 PSJF_2.txt: 
     Process P1:
         theory:     start at 0, end at 4000
-        my_result:  start at 0, end at 4099
-        difference: start_time 0.0%, end_time +2.48%
+        my_result:  start at 0, end at 3914
+        difference: start_time 0.0%, end_time -2.15%
     Process P2:
         theory:     start at 1000, end at 2000
-        my_result:  start at 1008, end at 2028
-        difference: start_time +0.80%, end_time +1.40%
+        my_result:  start at 1008, end at 1976
+        difference: start_time +0.80%, end_time -1.20%
     Process P3:
         theory:     start at 4000, end at 11000
-        my_result:  start at 4100, end at 11243
-        difference: start_time +2.50%, end_time +2.21%
+        my_result:  start at 3915, end at 10813
+        difference: start_time -2.12%, end_time -1.70%
     Process P4:
         theory:     start at 5000, end at 7000
-        my_result:  start at 5099, end at 7140
-        difference: start_time +1.98%, end_time +2.00%
+        my_result:  start at 5026, end at 6985
+        difference: start_time +0.52%, end_time -0.21%
     Process P5:
         theory:     start at 7000, end at 8000
-        my_result:  start at 7141, end at 8165
-        difference: start_time +2.01%, end_time +2.06%
+        my_result:  start at 7020, end at 8005
+        difference: start_time +0.29%, end_time +0.06%
 
 PSJF_3.txt: 
     Process P1:
         theory:     start at 0, end at 3500
-        my_result:  start at 0, end at 3563
-        difference: start_time 0.0%, end_time +1.80%
+        my_result:  start at 0, end at 3450
+        difference: start_time 0.0%, end_time -1.43%
     Process P2:
         theory:     start at 500, end at 1000
-        my_result:  start at 521, end at 1037
-        difference: start_time +4.20%, end_time +3.70%
+        my_result:  start at 498, end at 991
+        difference: start_time -0.40%, end_time -0.90%
     Process P3:
         theory:     start at 1000, end at 1500
-        my_result:  start at 1038, end at 1545
-        difference: start_time +3.80%, end_time +3.00%
+        my_result:  start at 992, end at 1478
+        difference: start_time -0.80%, end_time -1.47%
     Process P4:
         theory:     start at 1500, end at 2000
-        my_result:  start at 1546, end at 2064
-        difference: start_time +3.07%, end_time +3.20%
+        my_result:  start at 1479, end at 1974
+        difference: start_time -1.40%, end_time -1.30%
 
 PSJF_4.txt: 
     Process P1:
         theory:     start at 7000, end at 14000
-        my_result:  start at 3079, end at 14383
-        difference: start_time -56.01%, end_time +2.74%
+        my_result:  start at 0, end at 13810
+        difference: start_time -100.00%, end_time -1.36%
     Process P2:
         theory:     start at 0, end at 3000
-        my_result:  start at 0, end at 3077
-        difference: start_time 0.0%, end_time +2.57%
+        my_result:  start at 1084, end at 3043
+        difference: start_time 0.0%, end_time +1.43%
     Process P3:
         theory:     start at 100, end at 1100
-        my_result:  start at 108, end at 1134
-        difference: start_time +8.00%, end_time +3.09%
+        my_result:  start at 96, end at 1084
+        difference: start_time -4.00%, end_time -1.45%
     Process P4:
         theory:     start at 3000, end at 7000
-        my_result:  start at 3131, end at 7176
-        difference: start_time +4.37%, end_time +2.51%
+        my_result:  start at 3045, end at 6982
+        difference: start_time +1.50%, end_time -0.26%
 
 PSJF_5.txt: 
     Process P1:
@@ -431,18 +431,18 @@ PSJF_5.txt:
         difference: start_time +0.00%, end_time +0.00%
     Process P2:
         theory:     start at 400, end at 4400
-        my_result:  start at 412, end at 4499
-        difference: start_time +3.00%, end_time +2.25%
+        my_result:  start at 201, end at 4350
+        difference: start_time -49.75%, end_time -1.14%
     Process P3:
         theory:     start at 200, end at 400
-        my_result:  start at 201, end at 411
-        difference: start_time +0.50%, end_time +2.75%
+        my_result:  start at 207, end at 402
+        difference: start_time +3.50%, end_time +0.50%
     Process P4:
         theory:     start at 4400, end at 8400
-        my_result:  start at 4500, end at 8571
-        difference: start_time +2.27%, end_time +2.04%
+        my_result:  start at 4351, end at 8286
+        difference: start_time -1.11%, end_time -1.36%
     Process P5:
         theory:     start at 8400, end at 15400
-        my_result:  start at 8572, end at 15704
-        difference: start_time +2.05%, end_time +1.97%
+        my_result:  start at 8287, end at 15196
+        difference: start_time -1.35%, end_time -1.32%
 
