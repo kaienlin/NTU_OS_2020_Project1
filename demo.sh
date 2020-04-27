@@ -5,6 +5,10 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
+echo ======== kernel version ========
+uname -r
+echo ================================
+
 make clean && make
 dmesg -C
 for name in TIME_MEASUREMENT FIFO_1 PSJF_2 RR_3 SJF_4; do
