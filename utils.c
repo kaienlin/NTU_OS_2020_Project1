@@ -116,9 +116,13 @@ pid_t proc_dummy()
                 proc_set_other(getpid());
                 nice(-10);
                 while (1);
+                return 0;
         } else if (pid > 0) {
                 proc_set_cpu(pid, CPU_CHILDREN);
                 proc_set_other(pid);
                 return pid;
+        } else {
+                ERR_EXIT("fork");
+                return -1;
         }
 }
