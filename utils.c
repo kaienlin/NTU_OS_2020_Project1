@@ -38,15 +38,10 @@ void proc_set_cpu(pid_t pid, int cpu_id)
 
 void proc_start(Process *proc)
 {
-        nice(18);
         pid_t pid = fork();
         
         if (pid == 0) {  // child process
-                 // block the new process immediately
-                proc_set_cpu(pid, CPU_CHILDREN);
-                proc_block(proc);
-                TIME_UNIT;
-                
+                sched_yield();
                 // get starting time
                 long st_sec, st_nsec;
                 syscall(SYSCALL_GETTIME, &st_sec, &st_nsec);
@@ -63,7 +58,6 @@ void proc_start(Process *proc)
 
                 exit(EXIT_SUCCESS);
         } else if (pid > 0) {  // parent process
-                nice(-19);
                 // block the new process immediately
                 proc_set_cpu(pid, CPU_CHILDREN);
                 proc_block(proc);
@@ -88,9 +82,17 @@ void proc_set_priority(pid_t pid, int priority)
                 ERR_EXIT("sched_setscheduler");
 }
 
+void proc_set_other(pid_t pid)
+{
+        struct sched_param param;
+        param.sched_priority = 0;
+        if (sched_setscheduler(pid, SCHED_OTHER, &param) != 0)
+                ERR_EXIT("sched_setscheduler");
+}
+
 void proc_block(Process *proc)
 {
-        proc_set_priority(proc->pid, PRIORITY_LOW);
+        proc_set_other(proc->pid);
         proc->state = READY;
 }
 
@@ -104,4 +106,18 @@ void proc_term(Process *proc)
 {
         waitpid(proc->pid, NULL, 0);
         proc->state = TERMINATED;
+}
+
+pid_t proc_dummy()
+{
+        pid_t pid = fork();
+        if (pid == 0) {
+                proc_set_cpu(getpid(), CPU_CHILDREN);
+                proc_set_other(getpid());
+                nice(-10);
+                while (1);
+        } else if (pid > 0) {
+                proc_set_cpu(pid, CPU_CHILDREN);
+                proc_set_other(pid);
+        }
 }

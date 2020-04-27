@@ -25,7 +25,12 @@ int main(void)
         proc_set_cpu(getpid(), CPU_SCHEDULER);
 
         // make the scheduler have high priority
-        proc_set_priority(getpid(), PRIORITY_MEDIUM);
+        struct sched_param param;
+        param.sched_priority = PRIORITY_HIGH;
+        if (sched_setscheduler(getpid(), SCHED_FIFO|SCHED_RESET_ON_FORK, &param) != 0)
+                ERR_EXIT("sched_setscheduler");
+
+        pid_t dummy = proc_dummy();
 
         // parse policy and execute the corresponded function
         if (strcmp("FIFO", sched_policy) == 0) {
@@ -40,6 +45,8 @@ int main(void)
                 fprintf(stderr, "unknown scheduling policy: %s\n", sched_policy);
                 return EXIT_FAILURE;
         }
+
+        kill(dummy, SIGKILL);
         
         return EXIT_SUCCESS;
 }
