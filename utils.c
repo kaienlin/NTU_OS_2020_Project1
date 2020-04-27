@@ -119,5 +119,6 @@ pid_t proc_dummy()
         } else if (pid > 0) {
                 proc_set_cpu(pid, CPU_CHILDREN);
                 proc_set_other(pid);
+                return pid;
         }
 }
