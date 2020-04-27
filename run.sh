@@ -7,7 +7,7 @@ fi
 
 make clean && make
 dmesg -C
-for path in OS_PJ1_Test/FIFO*; do
+for path in OS_PJ1_Test/*; do
 	name=`basename -s .txt "${path}"`
         echo "Processing ${name}..."
 
