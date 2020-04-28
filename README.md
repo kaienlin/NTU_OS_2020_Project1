@@ -26,15 +26,34 @@ a user-space scheduler based on the priority-driven scheduler built in Linux ker
 
 #### Process Control
 
+定義一個 C structure ```Process``` 如下：
++ ```name```： input 裏指定的 name
++ ```ready_time```：  input 裏指定的 ready time
++ ```exec_time```: input 裏指定的 execution time
++ ```remaining_time```: 還剩下多少 time units 要跑，會隨著時間由 scheduler 動態更改。
++ ```ord```: 代表它在 input 裏出現的順序
++ ```pid```： process id
++ ```state```： 代表現在的狀態，有 ```NOT_ARRIVED, READY, RUNNING, TERMINATED``` 4 種不同的值。
+
 我寫了一些 functions 來協助我進行 processes 的控制：
 
 + ```proc_set_priority```: 利用 ```sched_setscheduler``` 設定指定的 priority。(```SCHED_FIFO```)
 + ```proc_set_other```: 利用 ```sched_setscheduler``` 設定 policy 爲 ```SCHED_OTHER```（非 real-time process，所以 priority 較低）
-+ ```proc_set_cpu```: 利用 ```sched_setaffinity``` 讓指定的 process 跑在指定的 CPU 上
++ ```proc_set_cpu```: 利用 ```sched_setaffinity``` 讓指定的 process 跑在指定的 CPU 上。
 + ```proc_start```: fork 出新的 process，爲了避免他在 scheduler 還沒處理前先跑，一 fork 出來就立刻把它的 priority 設成最低。
 + ```proc_block```: 把一個 process 的 priority 調成最低。
 + ```proc_wakeup```: 把一個 process 的 priority 調成最高。
 + ```proc_term```: 把一個已經結束的 process wait 掉。
+
+#### Priority Control:
+
+在我的程式中，共有3種可能的 priority:
++ 最高：使用 ```SCHED_FIFO``` policy，且 ```priority = 99```
+    + 只有 scheduler 和現在正在跑的 process 能在這個等級。因爲 scheduler 要持續監視各個 process 的狀態並計時，因此它必須一直使用 CPU，才能保證計時的準確性和排程的即時性。
++ 次高：使用 ```SCHED_OTHER``` policy，且 nice 設爲 -10
+    + 只有 dummy process 會在這個等級。dummy process 是我設計用來避免其他 process 在 scheduler 不知道的時候「偷跑」的機制。因爲若 CPU 1 在某些時候閒置下來，代表現在沒有在最高等級的 child process，所以在這個等級的 dummy process 就會是最優先被 kernel 跑的。而 dummy 是一個永遠跑不完的 infinte loop，因此其他在最低等級 process 不會有機會可以跑。
++ 最低： 使用 ```SCHED_OTHER``` policy, 且 nice 設爲 0 (default value)
+    + 所有在 ready state 的 processes 都在這個等級。
 
 #### FIFO_scheduler
 
@@ -43,18 +62,22 @@ a user-space scheduler based on the priority-driven scheduler built in Linux ker
 
 #### RR_scheduler
 
++ 變數 ```running_p``` 爲 -1 時代表現在沒有 process 在跑，爲非負整數時代表現在是 index 爲 ```running_p``` 的 process 在跑。 
 + 我用 Linked List 實作了一個 Queue，當一個 process 進入 ready state，就把他 push 進 queue裏，如果當下沒有正在跑的 process，則 pop 一個 process 出來跑。
++ 每個 time unit 減少一次現在在跑的 process 的 remaining time，直到它變爲 0，終止該程式並 release CPU。
 + 維護一個變數 ```counter``` 來記錄現在這個 process 還剩多少時間可以跑。每次把一個 process 叫醒，就把 ```counter``` 設爲 time quantum(500)。並在每個 time unit 之後減一。如果減到零了，且那個 process 的 remaining time > 0， 就把他 push 回 queue 裏，換下一個 process 跑。
 
 #### SJF_scheduler
 
-+ 如果當下沒有在跑的 process，就從所有在 “ready state” 的 processes 中找出 remaining time 最低的 process 來跑。
++ 變數 ```running_p``` 爲 -1 時代表現在沒有 process 在跑，爲非負整數時代表現在是 index 爲 ```running_p``` 的 process 在跑。 
++ 如果當下沒有在跑的 process(```running_p == -1```)，就從所有在 “ready state” 的 processes 中找出 remaining time 最低的 process 來跑。
 + 每個 time unit 減少一次現在在跑的 process 的 remaining time，直到它變爲 0，終止該程式並 release CPU。
 
 #### PSJF_scheduler
 
-+ 如果當下沒有在跑的 process，就從所有在 “ready state” 的 processes 中找出 remaining time 最低的 process 來跑。
-+ 如果當下有在跑的 process 且它的 remaining time 大於在目前已經 ready 的 processes 中的最小 remaining time，就 preempt 現在這個 process，改成跑 remaining time 最小的那個。
++ 變數 ```running_p``` 爲 -1 時代表現在沒有 process 在跑，爲非負整數時代表現在是 index 爲 ```running_p``` 的 process 在跑。
++ 如果當下沒有在跑的 process (```running_p == -1```)，就從所有在 “ready state” 的 processes 中找出 remaining time 最低的 process 來跑。
++ 如果當下有在跑的 process (```running_p != -1```)且它的 remaining time 大於在目前已經 ready 的 processes 中的最小 remaining time，就 preempt 現在這個 process，改成跑 remaining time 最小的那個。
 + 每個 time unit 減少一次現在在跑的 process 的 remaining time，直到它變爲 0，終止該程式並 release CPU。
 
 ## 比較實際結果與理論結果
