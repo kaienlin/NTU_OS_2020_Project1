@@ -181,16 +181,20 @@ class TestCase:
                 for p in real:
                         p['start_time'] -= t0
                         p['end_time'] -= t0
-
+                
+                avg_run_time_diff = 0.0
                 for th, rl in zip(theory, real):
                         result += f"    Process {th['name']}:\n"
                         result += f"        theory:     start at {th['start_time']}, end at {th['end_time']}\n"
                         result += f"        my_result:  start at {rl['start_time']}, end at {rl['end_time']}\n"
                         st_diff = self.calc_diff(th, rl, 'start_time')
                         ft_diff = self.calc_diff(th, rl, 'end_time')
-                        result += f"        difference: start_time {st_diff}%, end_time {ft_diff}%\n"
+                        run_time_diff = abs((rl['end_time'] - rl['start_time']) - (th['end_time'] - th['start_time']))
+                        avg_run_time_diff += run_time_diff
+                        result += f"        difference: start_time {st_diff}%, end_time {ft_diff}%, run_time {run_time_diff} units\n"
 
-                return result
+                avg_run_time_diff /= len(theory)
+                return result, avg_run_time_diff
 
 def get_time_unit():
         tc = TestCase('TIME_MEASUREMENT')
@@ -207,7 +211,12 @@ if __name__ == '__main__':
                 for i in range(1, 6):
                         test_case_list.append(f'{tp}_{i}')
         
+        tot = 0.0
         for tc_name in test_case_list:
                 tc = TestCase(tc_name)
-                result = tc.compare()
+                result, d = tc.compare()
                 print(result)
+                tot += d
+                print(f'    Average run time difference of {tc_name} = {d}\n')
+
+        print(f'Average run time difference of all test cases = {tot / len(test_case_list)} units')
