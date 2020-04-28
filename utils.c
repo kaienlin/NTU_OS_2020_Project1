@@ -58,6 +58,10 @@ void proc_start(Process *proc)
 
                 exit(EXIT_SUCCESS);
         } else if (pid > 0) {  // parent process
+                // set process attributes
+                proc->pid = pid;
+                proc->state = READY;
+
                 // block the new process immediately
                 proc_set_cpu(pid, CPU_CHILDREN);
                 proc_block(proc);
@@ -65,10 +69,6 @@ void proc_start(Process *proc)
                 // print to stdout
                 printf("%s %d\n", proc->name, pid);
                 fflush(stdout);
-
-                // set process attributes
-                proc->pid = pid;
-                proc->state = READY;
         } else {
                 ERR_EXIT("fork");
         }
