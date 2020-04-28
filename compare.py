@@ -30,10 +30,8 @@ class TestCase:
                 proc_list = []
                 with open(self.dmesg_path, 'r') as f:
                         for ln in f.readlines():
-                                ln = ln.strip().split()
-                                pid = int(ln[3])
-                                start_time = float(ln[4])
-                                end_time = float(ln[5])
+                                ln = ln.partition(']')[2].partition(']')[2].strip().split()
+                                pid, start_time, end_time = int(ln[0]), float(ln[1]), float(ln[2])
                                 proc_list.append(mk_proc(pid_to_name[pid], pid, start_time, end_time))
 
                 for p in proc_list:
