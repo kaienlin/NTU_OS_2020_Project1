@@ -2,447 +2,510 @@ FIFO_1.txt:
     Process P1:
         theory:     start at 0, end at 500
         my_result:  start at 0, end at 499
-        difference: start_time 0.0%, end_time -0.20%
+        difference: start_time 0.0%, end_time -0.20%, run_time 1 units
     Process P2:
         theory:     start at 500, end at 1000
         my_result:  start at 499, end at 1008
-        difference: start_time -0.20%, end_time +0.80%
+        difference: start_time -0.20%, end_time +0.80%, run_time 9 units
     Process P3:
         theory:     start at 1000, end at 1500
         my_result:  start at 1008, end at 1526
-        difference: start_time +0.80%, end_time +1.73%
+        difference: start_time +0.80%, end_time +1.73%, run_time 18 units
     Process P4:
         theory:     start at 1500, end at 2000
         my_result:  start at 1526, end at 2047
-        difference: start_time +1.73%, end_time +2.35%
+        difference: start_time +1.73%, end_time +2.35%, run_time 21 units
     Process P5:
         theory:     start at 2000, end at 2500
         my_result:  start at 2048, end at 2557
-        difference: start_time +2.40%, end_time +2.28%
+        difference: start_time +2.40%, end_time +2.28%, run_time 9 units
+
+    * The order of finish time is correct
+    * Average run time difference of FIFO_1 = 11.6 units
 
 FIFO_2.txt: 
     Process P1:
         theory:     start at 0, end at 80000
         my_result:  start at 0, end at 81782
-        difference: start_time 0.0%, end_time +2.23%
+        difference: start_time 0.0%, end_time +2.23%, run_time 1782 units
     Process P2:
         theory:     start at 80000, end at 85000
         my_result:  start at 81783, end at 86885
-        difference: start_time +2.23%, end_time +2.22%
+        difference: start_time +2.23%, end_time +2.22%, run_time 102 units
     Process P3:
         theory:     start at 85000, end at 86000
         my_result:  start at 86886, end at 87885
-        difference: start_time +2.22%, end_time +2.19%
+        difference: start_time +2.22%, end_time +2.19%, run_time 1 units
     Process P4:
         theory:     start at 86000, end at 87000
         my_result:  start at 87885, end at 88894
-        difference: start_time +2.19%, end_time +2.18%
+        difference: start_time +2.19%, end_time +2.18%, run_time 9 units
+
+    * The order of finish time is correct
+    * Average run time difference of FIFO_2 = 473.5 units
 
 FIFO_3.txt: 
     Process P1:
         theory:     start at 0, end at 8000
         my_result:  start at 0, end at 7933
-        difference: start_time 0.0%, end_time -0.84%
+        difference: start_time 0.0%, end_time -0.84%, run_time 67 units
     Process P2:
         theory:     start at 8000, end at 13000
         my_result:  start at 7934, end at 12971
-        difference: start_time -0.83%, end_time -0.22%
+        difference: start_time -0.83%, end_time -0.22%, run_time 37 units
     Process P3:
         theory:     start at 13000, end at 16000
         my_result:  start at 12971, end at 16055
-        difference: start_time -0.22%, end_time +0.34%
+        difference: start_time -0.22%, end_time +0.34%, run_time 84 units
     Process P4:
         theory:     start at 16000, end at 17000
         my_result:  start at 16055, end at 17069
-        difference: start_time +0.34%, end_time +0.41%
+        difference: start_time +0.34%, end_time +0.41%, run_time 14 units
     Process P5:
         theory:     start at 17000, end at 18000
         my_result:  start at 17069, end at 18088
-        difference: start_time +0.41%, end_time +0.49%
+        difference: start_time +0.41%, end_time +0.49%, run_time 19 units
     Process P6:
         theory:     start at 18000, end at 19000
         my_result:  start at 18088, end at 19110
-        difference: start_time +0.49%, end_time +0.58%
+        difference: start_time +0.49%, end_time +0.58%, run_time 22 units
     Process P7:
         theory:     start at 19000, end at 23000
         my_result:  start at 19111, end at 23156
-        difference: start_time +0.58%, end_time +0.68%
+        difference: start_time +0.58%, end_time +0.68%, run_time 45 units
+
+    * The order of finish time is correct
+    * Average run time difference of FIFO_3 = 41.142857142857146 units
 
 FIFO_4.txt: 
     Process P1:
         theory:     start at 0, end at 2000
         my_result:  start at 0, end at 2013
-        difference: start_time 0.0%, end_time +0.65%
+        difference: start_time 0.0%, end_time +0.65%, run_time 13 units
     Process P2:
         theory:     start at 2000, end at 2500
         my_result:  start at 2013, end at 2528
-        difference: start_time +0.65%, end_time +1.12%
+        difference: start_time +0.65%, end_time +1.12%, run_time 15 units
     Process P3:
         theory:     start at 2500, end at 2700
         my_result:  start at 2528, end at 2734
-        difference: start_time +1.12%, end_time +1.26%
+        difference: start_time +1.12%, end_time +1.26%, run_time 6 units
     Process P4:
         theory:     start at 2700, end at 3200
         my_result:  start at 2734, end at 3245
-        difference: start_time +1.26%, end_time +1.41%
+        difference: start_time +1.26%, end_time +1.41%, run_time 11 units
+
+    * The order of finish time is correct
+    * Average run time difference of FIFO_4 = 11.25 units
 
 FIFO_5.txt: 
     Process P1:
         theory:     start at 0, end at 8000
         my_result:  start at 0, end at 8080
-        difference: start_time 0.0%, end_time +1.00%
+        difference: start_time 0.0%, end_time +1.00%, run_time 80 units
     Process P2:
         theory:     start at 8000, end at 13000
         my_result:  start at 8080, end at 13110
-        difference: start_time +1.00%, end_time +0.85%
+        difference: start_time +1.00%, end_time +0.85%, run_time 30 units
     Process P3:
         theory:     start at 13000, end at 16000
         my_result:  start at 13110, end at 16142
-        difference: start_time +0.85%, end_time +0.89%
+        difference: start_time +0.85%, end_time +0.89%, run_time 32 units
     Process P4:
         theory:     start at 16000, end at 17000
         my_result:  start at 16143, end at 17147
-        difference: start_time +0.89%, end_time +0.86%
+        difference: start_time +0.89%, end_time +0.86%, run_time 4 units
     Process P5:
         theory:     start at 17000, end at 18000
         my_result:  start at 17147, end at 18144
-        difference: start_time +0.86%, end_time +0.80%
+        difference: start_time +0.86%, end_time +0.80%, run_time 3 units
     Process P6:
         theory:     start at 18000, end at 19000
         my_result:  start at 18145, end at 19239
-        difference: start_time +0.81%, end_time +1.26%
+        difference: start_time +0.81%, end_time +1.26%, run_time 94 units
     Process P7:
         theory:     start at 19000, end at 23000
         my_result:  start at 19239, end at 23466
-        difference: start_time +1.26%, end_time +2.03%
+        difference: start_time +1.26%, end_time +2.03%, run_time 227 units
+
+    * The order of finish time is correct
+    * Average run time difference of FIFO_5 = 67.14285714285714 units
 
 RR_1.txt: 
     Process P1:
         theory:     start at 0, end at 500
         my_result:  start at 0, end at 503
-        difference: start_time 0.0%, end_time +0.60%
+        difference: start_time 0.0%, end_time +0.60%, run_time 3 units
     Process P2:
         theory:     start at 500, end at 1000
         my_result:  start at 503, end at 1015
-        difference: start_time +0.60%, end_time +1.50%
+        difference: start_time +0.60%, end_time +1.50%, run_time 12 units
     Process P3:
         theory:     start at 1000, end at 1500
         my_result:  start at 1015, end at 1527
-        difference: start_time +1.50%, end_time +1.80%
+        difference: start_time +1.50%, end_time +1.80%, run_time 12 units
     Process P4:
         theory:     start at 1500, end at 2000
         my_result:  start at 1527, end at 2035
-        difference: start_time +1.80%, end_time +1.75%
+        difference: start_time +1.80%, end_time +1.75%, run_time 8 units
     Process P5:
         theory:     start at 2000, end at 2500
         my_result:  start at 2035, end at 2536
-        difference: start_time +1.75%, end_time +1.44%
+        difference: start_time +1.75%, end_time +1.44%, run_time 1 units
+
+    * The order of finish time is correct
+    * Average run time difference of RR_1 = 7.2 units
 
 RR_2.txt: 
     Process P1:
         theory:     start at 600, end at 8100
         my_result:  start at 600, end at 8102
-        difference: start_time +0.00%, end_time +0.02%
+        difference: start_time +0.00%, end_time +0.02%, run_time 2 units
     Process P2:
         theory:     start at 1100, end at 9600
         my_result:  start at 1088, end at 9728
-        difference: start_time -1.09%, end_time +1.33%
+        difference: start_time -1.09%, end_time +1.33%, run_time 140 units
+
+    * The order of finish time is correct
+    * Average run time difference of RR_2 = 71.0 units
 
 RR_3.txt: 
     Process P1:
         theory:     start at 1200, end at 19200
         my_result:  start at 1200, end at 19858
-        difference: start_time +0.00%, end_time +3.43%
+        difference: start_time +0.00%, end_time +3.43%, run_time 658 units
     Process P2:
         theory:     start at 2700, end at 20200
         my_result:  start at 2669, end at 21097
-        difference: start_time -1.15%, end_time +4.44%
+        difference: start_time -1.15%, end_time +4.44%, run_time 928 units
     Process P3:
         theory:     start at 4200, end at 18200
         my_result:  start at 4289, end at 18718
-        difference: start_time +2.12%, end_time +2.85%
+        difference: start_time +2.12%, end_time +2.85%, run_time 429 units
     Process P4:
         theory:     start at 6200, end at 31200
         my_result:  start at 6397, end at 32521
-        difference: start_time +3.18%, end_time +4.23%
+        difference: start_time +3.18%, end_time +4.23%, run_time 1124 units
     Process P5:
         theory:     start at 7200, end at 30200
         my_result:  start at 7456, end at 31269
-        difference: start_time +3.56%, end_time +3.54%
+        difference: start_time +3.56%, end_time +3.54%, run_time 813 units
     Process P6:
         theory:     start at 8200, end at 28200
         my_result:  start at 8434, end at 29097
-        difference: start_time +2.85%, end_time +3.18%
+        difference: start_time +2.85%, end_time +3.18%, run_time 663 units
+
+    * The order of finish time is correct
+    * Average run time difference of RR_3 = 769.1666666666666 units
 
 RR_4.txt: 
     Process P1:
         theory:     start at 0, end at 23000
         my_result:  start at 0, end at 23465
-        difference: start_time 0.0%, end_time +2.02%
+        difference: start_time 0.0%, end_time +2.02%, run_time 465 units
     Process P2:
         theory:     start at 500, end at 20000
         my_result:  start at 495, end at 20182
-        difference: start_time -1.00%, end_time +0.91%
+        difference: start_time -1.00%, end_time +0.91%, run_time 187 units
     Process P3:
         theory:     start at 1000, end at 14500
         my_result:  start at 980, end at 14442
-        difference: start_time -2.00%, end_time -0.40%
+        difference: start_time -2.00%, end_time -0.40%, run_time 38 units
     Process P4:
         theory:     start at 1500, end at 5500
         my_result:  start at 1460, end at 5392
-        difference: start_time -2.67%, end_time -1.96%
+        difference: start_time -2.67%, end_time -1.96%, run_time 68 units
     Process P5:
         theory:     start at 2500, end at 6500
         my_result:  start at 2420, end at 6425
-        difference: start_time -3.20%, end_time -1.15%
+        difference: start_time -3.20%, end_time -1.15%, run_time 5 units
     Process P6:
         theory:     start at 3000, end at 7000
         my_result:  start at 2904, end at 6973
-        difference: start_time -3.20%, end_time -0.39%
+        difference: start_time -3.20%, end_time -0.39%, run_time 69 units
     Process P7:
         theory:     start at 3500, end at 18500
         my_result:  start at 3384, end at 18481
-        difference: start_time -3.31%, end_time -0.10%
+        difference: start_time -3.31%, end_time -0.10%, run_time 97 units
+
+    * The order of finish time is correct
+    * Average run time difference of RR_4 = 132.71428571428572 units
 
 RR_5.txt: 
     Process P1:
         theory:     start at 0, end at 23000
         my_result:  start at 0, end at 23430
-        difference: start_time 0.0%, end_time +1.87%
+        difference: start_time 0.0%, end_time +1.87%, run_time 430 units
     Process P2:
         theory:     start at 500, end at 20000
         my_result:  start at 501, end at 20125
-        difference: start_time +0.20%, end_time +0.62%
+        difference: start_time +0.20%, end_time +0.62%, run_time 124 units
     Process P3:
         theory:     start at 1000, end at 14500
         my_result:  start at 986, end at 14422
-        difference: start_time -1.40%, end_time -0.54%
+        difference: start_time -1.40%, end_time -0.54%, run_time 64 units
     Process P4:
         theory:     start at 1500, end at 5500
         my_result:  start at 1471, end at 5383
-        difference: start_time -1.93%, end_time -2.13%
+        difference: start_time -1.93%, end_time -2.13%, run_time 88 units
     Process P5:
         theory:     start at 2000, end at 6000
         my_result:  start at 1966, end at 5929
-        difference: start_time -1.70%, end_time -1.18%
+        difference: start_time -1.70%, end_time -1.18%, run_time 37 units
     Process P6:
         theory:     start at 3000, end at 7000
         my_result:  start at 2928, end at 6957
-        difference: start_time -2.40%, end_time -0.61%
+        difference: start_time -2.40%, end_time -0.61%, run_time 29 units
     Process P7:
         theory:     start at 3500, end at 18500
         my_result:  start at 3419, end at 18457
-        difference: start_time -2.31%, end_time -0.23%
+        difference: start_time -2.31%, end_time -0.23%, run_time 38 units
+
+    * The order of finish time is correct
+    * Average run time difference of RR_5 = 115.71428571428571 units
 
 SJF_1.txt: 
     Process P1:
         theory:     start at 7000, end at 14000
         my_result:  start at 7154, end at 14357
-        difference: start_time +2.20%, end_time +2.55%
+        difference: start_time +2.20%, end_time +2.55%, run_time 203 units
     Process P2:
         theory:     start at 0, end at 2000
         my_result:  start at 0, end at 2011
-        difference: start_time 0.0%, end_time +0.55%
+        difference: start_time 0.0%, end_time +0.55%, run_time 11 units
     Process P3:
         theory:     start at 2000, end at 3000
         my_result:  start at 2011, end at 3039
-        difference: start_time +0.55%, end_time +1.30%
+        difference: start_time +0.55%, end_time +1.30%, run_time 28 units
     Process P4:
         theory:     start at 3000, end at 7000
         my_result:  start at 3039, end at 7154
-        difference: start_time +1.30%, end_time +2.20%
+        difference: start_time +1.30%, end_time +2.20%, run_time 115 units
+
+    * The order of finish time is correct
+    * Average run time difference of SJF_1 = 89.25 units
 
 SJF_2.txt: 
     Process P1:
         theory:     start at 100, end at 200
         my_result:  start at 100, end at 201
-        difference: start_time +0.00%, end_time +0.50%
+        difference: start_time +0.00%, end_time +0.50%, run_time 1 units
     Process P2:
         theory:     start at 400, end at 4400
         my_result:  start at 406, end at 4508
-        difference: start_time +1.50%, end_time +2.45%
+        difference: start_time +1.50%, end_time +2.45%, run_time 102 units
     Process P3:
         theory:     start at 200, end at 400
         my_result:  start at 206, end at 406
-        difference: start_time +3.00%, end_time +1.50%
+        difference: start_time +3.00%, end_time +1.50%, run_time 0 units
     Process P4:
         theory:     start at 4400, end at 8400
         my_result:  start at 4508, end at 8604
-        difference: start_time +2.45%, end_time +2.43%
+        difference: start_time +2.45%, end_time +2.43%, run_time 96 units
     Process P5:
         theory:     start at 8400, end at 15400
         my_result:  start at 8604, end at 15821
-        difference: start_time +2.43%, end_time +2.73%
+        difference: start_time +2.43%, end_time +2.73%, run_time 217 units
+
+    * The order of finish time is correct
+    * Average run time difference of SJF_2 = 83.2 units
 
 SJF_3.txt: 
     Process P1:
         theory:     start at 100, end at 3100
         my_result:  start at 100, end at 3149
-        difference: start_time +0.00%, end_time +1.58%
+        difference: start_time +0.00%, end_time +1.58%, run_time 49 units
     Process P2:
         theory:     start at 11120, end at 16120
         my_result:  start at 11354, end at 16504
-        difference: start_time +2.10%, end_time +2.38%
+        difference: start_time +2.10%, end_time +2.38%, run_time 150 units
     Process P3:
         theory:     start at 16120, end at 23120
         my_result:  start at 16505, end at 23652
-        difference: start_time +2.39%, end_time +2.30%
+        difference: start_time +2.39%, end_time +2.30%, run_time 147 units
     Process P4:
         theory:     start at 3100, end at 3110
         my_result:  start at 3149, end at 3159
-        difference: start_time +1.58%, end_time +1.58%
+        difference: start_time +1.58%, end_time +1.58%, run_time 0 units
     Process P5:
         theory:     start at 3110, end at 3120
         my_result:  start at 3159, end at 3169
-        difference: start_time +1.58%, end_time +1.57%
+        difference: start_time +1.58%, end_time +1.57%, run_time 0 units
     Process P6:
         theory:     start at 3120, end at 7120
         my_result:  start at 3169, end at 7239
-        difference: start_time +1.57%, end_time +1.67%
+        difference: start_time +1.57%, end_time +1.67%, run_time 70 units
     Process P7:
         theory:     start at 7120, end at 11120
         my_result:  start at 7240, end at 11354
-        difference: start_time +1.69%, end_time +2.10%
+        difference: start_time +1.69%, end_time +2.10%, run_time 114 units
     Process P8:
         theory:     start at 23120, end at 32120
         my_result:  start at 23652, end at 32878
-        difference: start_time +2.30%, end_time +2.36%
+        difference: start_time +2.30%, end_time +2.36%, run_time 226 units
+
+    * The order of finish time is correct
+    * Average run time difference of SJF_3 = 94.5 units
 
 SJF_4.txt: 
     Process P1:
         theory:     start at 0, end at 3000
         my_result:  start at 0, end at 3034
-        difference: start_time 0.0%, end_time +1.13%
+        difference: start_time 0.0%, end_time +1.13%, run_time 34 units
     Process P2:
         theory:     start at 3000, end at 4000
         my_result:  start at 3034, end at 4058
-        difference: start_time +1.13%, end_time +1.45%
+        difference: start_time +1.13%, end_time +1.45%, run_time 24 units
     Process P3:
         theory:     start at 4000, end at 8000
         my_result:  start at 4058, end at 8157
-        difference: start_time +1.45%, end_time +1.96%
+        difference: start_time +1.45%, end_time +1.96%, run_time 99 units
     Process P4:
         theory:     start at 9000, end at 11000
         my_result:  start at 9178, end at 11231
-        difference: start_time +1.98%, end_time +2.10%
+        difference: start_time +1.98%, end_time +2.10%, run_time 53 units
     Process P5:
         theory:     start at 8000, end at 9000
         my_result:  start at 8158, end at 9178
-        difference: start_time +1.98%, end_time +1.98%
+        difference: start_time +1.98%, end_time +1.98%, run_time 20 units
+
+    * The order of finish time is correct
+    * Average run time difference of SJF_4 = 46.0 units
 
 SJF_5.txt: 
     Process P1:
         theory:     start at 0, end at 2000
         my_result:  start at 0, end at 2026
-        difference: start_time 0.0%, end_time +1.30%
+        difference: start_time 0.0%, end_time +1.30%, run_time 26 units
     Process P2:
         theory:     start at 2000, end at 2500
         my_result:  start at 2026, end at 2541
-        difference: start_time +1.30%, end_time +1.64%
+        difference: start_time +1.30%, end_time +1.64%, run_time 15 units
     Process P3:
         theory:     start at 2500, end at 3000
         my_result:  start at 2542, end at 3050
-        difference: start_time +1.68%, end_time +1.67%
+        difference: start_time +1.68%, end_time +1.67%, run_time 8 units
     Process P4:
         theory:     start at 3000, end at 3500
         my_result:  start at 3050, end at 3561
-        difference: start_time +1.67%, end_time +1.74%
+        difference: start_time +1.67%, end_time +1.74%, run_time 11 units
+
+    * The order of finish time is correct
+    * Average run time difference of SJF_5 = 15.0 units
 
 PSJF_1.txt: 
     Process P1:
         theory:     start at 0, end at 25000
         my_result:  start at 0, end at 25585
-        difference: start_time 0.0%, end_time +2.34%
+        difference: start_time 0.0%, end_time +2.34%, run_time 585 units
     Process P2:
         theory:     start at 1000, end at 16000
         my_result:  start at 1040, end at 16359
-        difference: start_time +4.00%, end_time +2.24%
+        difference: start_time +4.00%, end_time +2.24%, run_time 319 units
     Process P3:
         theory:     start at 2000, end at 10000
         my_result:  start at 2022, end at 10144
-        difference: start_time +1.10%, end_time +1.44%
+        difference: start_time +1.10%, end_time +1.44%, run_time 122 units
     Process P4:
         theory:     start at 3000, end at 6000
         my_result:  start at 3004, end at 6041
-        difference: start_time +0.13%, end_time +0.68%
+        difference: start_time +0.13%, end_time +0.68%, run_time 37 units
+
+    * The order of finish time is correct
+    * Average run time difference of PSJF_1 = 265.75 units
 
 PSJF_2.txt: 
     Process P1:
         theory:     start at 0, end at 4000
         my_result:  start at 0, end at 4098
-        difference: start_time 0.0%, end_time +2.45%
+        difference: start_time 0.0%, end_time +2.45%, run_time 98 units
     Process P2:
         theory:     start at 1000, end at 2000
         my_result:  start at 974, end at 2014
-        difference: start_time -2.60%, end_time +0.70%
+        difference: start_time -2.60%, end_time +0.70%, run_time 40 units
     Process P3:
         theory:     start at 4000, end at 11000
         my_result:  start at 4099, end at 11276
-        difference: start_time +2.48%, end_time +2.51%
+        difference: start_time +2.48%, end_time +2.51%, run_time 177 units
     Process P4:
         theory:     start at 5000, end at 7000
         my_result:  start at 5090, end at 7153
-        difference: start_time +1.80%, end_time +2.19%
+        difference: start_time +1.80%, end_time +2.19%, run_time 63 units
     Process P5:
         theory:     start at 7000, end at 8000
         my_result:  start at 7154, end at 8169
-        difference: start_time +2.20%, end_time +2.11%
+        difference: start_time +2.20%, end_time +2.11%, run_time 15 units
+
+    * The order of finish time is correct
+    * Average run time difference of PSJF_2 = 78.6 units
 
 PSJF_3.txt: 
     Process P1:
         theory:     start at 0, end at 3500
         my_result:  start at 0, end at 3552
-        difference: start_time 0.0%, end_time +1.49%
+        difference: start_time 0.0%, end_time +1.49%, run_time 52 units
     Process P2:
         theory:     start at 500, end at 1000
         my_result:  start at 487, end at 991
-        difference: start_time -2.60%, end_time -0.90%
+        difference: start_time -2.60%, end_time -0.90%, run_time 4 units
     Process P3:
         theory:     start at 1000, end at 1500
         my_result:  start at 991, end at 1508
-        difference: start_time -0.90%, end_time +0.53%
+        difference: start_time -0.90%, end_time +0.53%, run_time 17 units
     Process P4:
         theory:     start at 1500, end at 2000
         my_result:  start at 1508, end at 2018
-        difference: start_time +0.53%, end_time +0.90%
+        difference: start_time +0.53%, end_time +0.90%, run_time 10 units
+
+    * The order of finish time is correct
+    * Average run time difference of PSJF_3 = 20.75 units
 
 PSJF_4.txt: 
     Process P1:
         theory:     start at 7000, end at 14000
         my_result:  start at 7119, end at 14308
-        difference: start_time +1.70%, end_time +2.20%
+        difference: start_time +1.70%, end_time +2.20%, run_time 189 units
     Process P2:
         theory:     start at 0, end at 3000
         my_result:  start at 0, end at 3023
-        difference: start_time 0.0%, end_time +0.77%
+        difference: start_time 0.0%, end_time +0.77%, run_time 23 units
     Process P3:
         theory:     start at 100, end at 1100
         my_result:  start at 105, end at 1112
-        difference: start_time +5.00%, end_time +1.09%
+        difference: start_time +5.00%, end_time +1.09%, run_time 7 units
     Process P4:
         theory:     start at 3000, end at 7000
         my_result:  start at 3023, end at 7118
-        difference: start_time +0.77%, end_time +1.69%
+        difference: start_time +0.77%, end_time +1.69%, run_time 95 units
+
+    * The order of finish time is correct
+    * Average run time difference of PSJF_4 = 78.5 units
 
 PSJF_5.txt: 
     Process P1:
         theory:     start at 100, end at 200
         my_result:  start at 100, end at 199
-        difference: start_time +0.00%, end_time -0.50%
+        difference: start_time +0.00%, end_time -0.50%, run_time 1 units
     Process P2:
         theory:     start at 400, end at 4400
         my_result:  start at 408, end at 4528
-        difference: start_time +2.00%, end_time +2.91%
+        difference: start_time +2.00%, end_time +2.91%, run_time 120 units
     Process P3:
         theory:     start at 200, end at 400
         my_result:  start at 199, end at 408
-        difference: start_time -0.50%, end_time +2.00%
+        difference: start_time -0.50%, end_time +2.00%, run_time 9 units
     Process P4:
         theory:     start at 4400, end at 8400
         my_result:  start at 4528, end at 8605
-        difference: start_time +2.91%, end_time +2.44%
+        difference: start_time +2.91%, end_time +2.44%, run_time 77 units
     Process P5:
         theory:     start at 8400, end at 15400
         my_result:  start at 8605, end at 15787
-        difference: start_time +2.44%, end_time +2.51%
+        difference: start_time +2.44%, end_time +2.51%, run_time 182 units
 
+    * The order of finish time is correct
+    * Average run time difference of PSJF_5 = 77.8 units
+
+----------------------------------------------------------------------------------
+Average run time difference of all test cases = 127.48904761904762 units
+----------------------------------------------------------------------------------

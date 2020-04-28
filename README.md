@@ -61,6 +61,8 @@ a user-space scheduler based on the priority-driven scheduler built in Linux ker
 
 我寫了一個 python script 去計算理論數值和我的 output 的差別，比較結果放在 theory_vs_real.txt 這個檔案裏。如果需要執行的話，請確保 python 版本是 3.6 以上，且 input 和 output 都放在對應的資料夾裏。對於每一個 process，我以百分比表示實際值相較理論值提升或減少了幾%。我將根據這些數值來說明我的觀察：
 
++ 實際執行時間與理論執行時間的絕對差距隨著時間拉長而增加，這是因爲每個單位時間的誤差會累積起來。如果我們按照比例去計算 start time 和 end time 的誤差，會發現其實都維持在一定的百分比。所以這樣的增長趨勢是合理的。
+
 + 基本上，實際值略多於理論值，但誤差均小於 5%，這代表我的 scheduler 有確實遵循對應的 policy。而略多的部分我認爲是因爲 scheduler 的時間實際上會過得比較慢，因爲 scheduler 除了計時以外，還需要處理排程的事務，因此 scheduler 和 child processes 沒辦法完全 synchronized 是很合理的結果。這使得有一些 CPU 時間因爲 scheduler 來不及分配而浪費掉，所以實際的執行時間就會比較長。此外，因爲同時間系統裏還有其他程式在跑，而且這些程式無法被 scheduler 控制，多少會佔用一點 CPU 的時間。
 
 + 有極少數情況，實際的時間會「早於」理論的時間，我認爲這是因爲我的 scheduler 無法在已經把一個 process fork 出來的情況下仍能保證它不會「意外」佔用到 CPU。因爲所有程式的 scheduling 實際上仍是由 kernel 控制的。在極端情況下，甚至可能會出現 start time 遠早於理論值的情況，就是因爲那個 process 在意外被分配到的 CPU 時間裏 call 了獲取時間的 system call。對於這個情況，我用了2種方式去確保不會發生：

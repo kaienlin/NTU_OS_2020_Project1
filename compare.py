@@ -4,6 +4,8 @@ input_dir = 'OS_PJ1_Test'
 output_dir = 'output'
 TIME_UNIT = 1
 
+warning_buffer = ''
+
 class TestCase:
         def __init__(self, test_name):
                 self.test_name = test_name
@@ -40,6 +42,117 @@ class TestCase:
 
                 return proc_list
 
+        def FIFO_scheduler(self, proc_list, N):
+                t = 0
+                for p in proc_list:
+                        if p['ready'] <= t:
+                                p['start_time'] = t
+                                p['end_time'] = t + p['exec']
+                                t = p['end_time']
+
+        def RR_scheduler(self, proc_list, N):
+                t = 0
+                ready_p = 0
+                running_p = -1
+                queue = []
+                left = N
+                while left > 0:
+                        while ready_p < N and proc_list[ready_p]['ready'] <= t:
+                                queue.append(ready_p)
+                                ready_p += 1
+                        
+                        if running_p == -1 and len(queue) > 0:
+                                running_p = queue.pop(0)
+                                RRcnt = 500
+                                if 'start_time' not in proc_list[running_p]:
+                                        proc_list[running_p]['start_time'] = t
+
+                        t += 1
+                        
+                        if running_p != -1:
+                                proc_list[running_p]['exec'] -= 1
+                                RRcnt -= 1
+                                if RRcnt == 0 and proc_list[running_p]['exec'] != 0:
+                                        queue.append(running_p)
+                                        running_p = -1
+                                elif proc_list[running_p]['exec'] == 0:
+                                        proc_list[running_p]['end_time'] = t
+                                        left -= 1
+                                        running_p = -1
+
+        def SJF_scheduler(self, proc_list, N):
+                t = 0
+                ready_p = 0
+                running_p = -1
+                is_ready = [False for _ in range(N)]
+                left = N
+                while left > 0:
+                        while ready_p < N and proc_list[ready_p]['ready'] <= t:
+                                is_ready[ready_p] = True
+                                ready_p += 1
+
+                        if running_p == -1:
+                                mn = 1e10+999
+                                for i, p in enumerate(proc_list):
+                                        if not is_ready[i]: continue
+                                        if p['exec'] < mn:
+                                                mn = p['exec']
+                                                running_p = i
+                                if running_p != -1:
+                                        is_ready[running_p] = False
+                                        if 'start_time' not in proc_list[running_p]:
+                                                proc_list[running_p]['start_time'] = t
+
+                        t += 1
+
+                        if running_p != -1:
+                                proc_list[running_p]['exec'] -= 1
+                                if proc_list[running_p]['exec'] == 0:
+                                        proc_list[running_p]['end_time'] = t
+                                        is_ready[running_p] = False
+                                        left -= 1
+                                        running_p = -1
+
+        def PSJF_scheduler(self, proc_list, N):
+                t = 0
+                ready_p = 0
+                running_p = -1
+                is_ready = [False for _ in range(N)]
+                left = N
+                while left > 0:
+                        while ready_p < N and proc_list[ready_p]['ready'] <= t:
+                                is_ready[ready_p] = True
+                                ready_p += 1
+                        
+                        mn_p = -1
+                        mn = 1e10+999
+                        for i, p in enumerate(proc_list):
+                                if not is_ready[i]: continue
+                                if p['exec'] < mn:
+                                        mn = p['exec']
+                                        mn_p = i
+                        if running_p == -1 and mn_p != -1:
+                                running_p = mn_p
+                                is_ready[running_p] = False
+                                if 'start_time' not in proc_list[running_p]:
+                                        proc_list[running_p]['start_time'] = t
+                        elif mn_p != -1 and proc_list[mn_p]['exec'] < proc_list[running_p]['exec']:
+                                is_ready[running_p] = True
+                                running_p = mn_p
+                                is_ready[running_p] = False
+                                if 'start_time' not in proc_list[running_p]:
+                                        proc_list[running_p]['start_time'] = t
+
+                        t += 1
+
+                        if running_p != -1:
+                                proc_list[running_p]['exec'] -= 1
+                                if proc_list[running_p]['exec'] == 0:
+                                        proc_list[running_p]['end_time'] = t
+                                        is_ready[running_p] = False
+                                        left -= 1
+                                        running_p = -1
+
         def simulation(self):
                 proc_list = []
                 with open(self.input_path, 'r') as f:
@@ -52,112 +165,13 @@ class TestCase:
                 proc_list.sort(key=lambda p: p['ready'] * 1000000000 + p['index'])
 
                 if policy == 'FIFO':
-                        t = 0
-                        for p in proc_list:
-                                if p['ready'] <= t:
-                                        p['start_time'] = t
-                                        p['end_time'] = t + p['exec']
-                                        t = p['end_time']
+                        self.FIFO_scheduler(proc_list, N)
                 elif policy == 'RR':
-                        t = 0
-                        ready_p = 0
-                        running_p = -1
-                        queue = []
-                        left = N
-                        while left > 0:
-                                while ready_p < N and proc_list[ready_p]['ready'] <= t:
-                                        queue.append(ready_p)
-                                        ready_p += 1
-                                
-                                if running_p == -1 and len(queue) > 0:
-                                        running_p = queue.pop(0)
-                                        RRcnt = 500
-                                        if 'start_time' not in proc_list[running_p]:
-                                                proc_list[running_p]['start_time'] = t
-
-                                t += 1
-                                
-                                if running_p != -1:
-                                        proc_list[running_p]['exec'] -= 1
-                                        RRcnt -= 1
-                                        if RRcnt == 0 and proc_list[running_p]['exec'] != 0:
-                                                queue.append(running_p)
-                                                running_p = -1
-                                        elif proc_list[running_p]['exec'] == 0:
-                                                proc_list[running_p]['end_time'] = t
-                                                left -= 1
-                                                running_p = -1
+                        self.RR_scheduler(proc_list, N)
                 elif policy == 'SJF':
-                        t = 0
-                        ready_p = 0
-                        running_p = -1
-                        is_ready = [False for _ in range(N)]
-                        left = N
-                        while left > 0:
-                                while ready_p < N and proc_list[ready_p]['ready'] <= t:
-                                        is_ready[ready_p] = True
-                                        ready_p += 1
-
-                                if running_p == -1:
-                                        mn = 1e10+999
-                                        for i, p in enumerate(proc_list):
-                                                if not is_ready[i]: continue
-                                                if p['exec'] < mn:
-                                                        mn = p['exec']
-                                                        running_p = i
-                                        if running_p != -1:
-                                                is_ready[running_p] = False
-                                                if 'start_time' not in proc_list[running_p]:
-                                                        proc_list[running_p]['start_time'] = t
-
-                                t += 1
-
-                                if running_p != -1:
-                                        proc_list[running_p]['exec'] -= 1
-                                        if proc_list[running_p]['exec'] == 0:
-                                                proc_list[running_p]['end_time'] = t
-                                                is_ready[running_p] = False
-                                                left -= 1
-                                                running_p = -1
+                        self.SJF_scheduler(proc_list, N)
                 elif policy == 'PSJF':
-                        t = 0
-                        ready_p = 0
-                        running_p = -1
-                        is_ready = [False for _ in range(N)]
-                        left = N
-                        while left > 0:
-                                while ready_p < N and proc_list[ready_p]['ready'] <= t:
-                                        is_ready[ready_p] = True
-                                        ready_p += 1
-                                
-                                mn_p = -1
-                                mn = 1e10+999
-                                for i, p in enumerate(proc_list):
-                                        if not is_ready[i]: continue
-                                        if p['exec'] < mn:
-                                                mn = p['exec']
-                                                mn_p = i
-                                if running_p == -1 and mn_p != -1:
-                                        running_p = mn_p
-                                        is_ready[running_p] = False
-                                        if 'start_time' not in proc_list[running_p]:
-                                                proc_list[running_p]['start_time'] = t
-                                elif mn_p != -1 and proc_list[mn_p]['exec'] < proc_list[running_p]['exec']:
-                                        is_ready[running_p] = True
-                                        running_p = mn_p
-                                        is_ready[running_p] = False
-                                        if 'start_time' not in proc_list[running_p]:
-                                                proc_list[running_p]['start_time'] = t
-
-                                t += 1
-
-                                if running_p != -1:
-                                        proc_list[running_p]['exec'] -= 1
-                                        if proc_list[running_p]['exec'] == 0:
-                                                proc_list[running_p]['end_time'] = t
-                                                is_ready[running_p] = False
-                                                left -= 1
-                                                running_p = -1
+                        self.PSJF_scheduler(proc_list, N)
 
                 return proc_list
 
@@ -167,6 +181,13 @@ class TestCase:
                         return 0.0
                 prettyfloat = lambda x: '%+0.2f' % x
                 return prettyfloat((rl[name] - th[name]) / th[name] * 100)
+
+        @staticmethod
+        def get_order(proc_list):
+                O = []
+                for p in sorted(proc_list, key=lambda p: p['end_time']):
+                        O.append(p['name'])
+                return tuple(O)
 
         def compare(self):
                 result = f'{self.test_name}.txt: \n'
@@ -194,6 +215,11 @@ class TestCase:
                         result += f"        difference: start_time {st_diff}%, end_time {ft_diff}%, run_time {run_time_diff} units\n"
 
                 avg_run_time_diff /= len(theory)
+                order_correct = self.get_order(theory) == self.get_order(real)
+                result += f"\n    * The order of finish time is {'correct' if order_correct else '!!!INCORRECT!!!'}"
+                global warning_buffer
+                if not order_correct:
+                        warning_buffer += f'{self.test_name}\'s order of finish time is incorrect!!\n'
                 return result, avg_run_time_diff
 
 def get_time_unit():
@@ -217,6 +243,12 @@ if __name__ == '__main__':
                 result, d = tc.compare()
                 print(result)
                 tot += d
-                print(f'    Average run time difference of {tc_name} = {d}\n')
+                print(f'    * Average run time difference of {tc_name} = {d} units\n')
 
+        print('----------------------------------------------------------------------------------')
         print(f'Average run time difference of all test cases = {tot / len(test_case_list)} units')
+        print('----------------------------------------------------------------------------------')
+
+        if warning_buffer:
+                print('')
+                print(warning_buffer)
